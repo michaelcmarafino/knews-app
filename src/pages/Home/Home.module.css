@@ -1,10 +1,10 @@
 .home {
     /* background: #415a77; */
-    background-color: #054861;
+    /* background-color: #054861; */
     width: 100%;
     padding: 2em 1em;
     color: #fff;
-    background-color: rgba(5, 72, 97, 0.85);
+    /* background-color: rgba(5, 72, 97, 0.85); */
     display: flex;
     justify-content: space-between;
 }

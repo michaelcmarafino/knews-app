@@ -4,11 +4,14 @@ import styles from "./Story.module.css"
 function Story({ data }) {
     return (
         <div className={styles.container}>
-            <img
-                alt={data.multimedia[0].caption}
-                className={styles.img}
-                src={data.multimedia[0].url}
-            />
+            <div className={styles.imageContainer}>
+                <img
+                    alt={data.multimedia[0].caption}
+                    className={styles.img}
+                    src={data.multimedia[0].url}
+                />
+            </div>
+
             <h1>
                 <a
                     className={styles.title}

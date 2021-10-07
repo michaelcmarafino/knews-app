@@ -7,7 +7,7 @@ export default function Search() {
     const { query, handleChange } = useContext(Context)
 
     return (
-        <>
+        <form onSubmit={handleChange}>
             <input
                 className={styles.input}
                 type="text"
@@ -15,6 +15,7 @@ export default function Search() {
                 value={query}
                 onChange={handleChange}
             />
-        </>
+            <button>Go</button>
+        </form>
     )
 }
