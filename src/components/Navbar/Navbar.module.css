@@ -1,0 +1,39 @@
+nav {
+    height: 30%;
+    /* background: #778da9; */
+    /* background: rgb(255, 161, 93); */
+    background: linear-gradient(
+        90deg,
+        /* rgba(255, 161, 93, 1) 0%,
+      rgba(255, 113, 59, 1) 100% */ #d78c9b
+            0%,
+        #ff9f85 100%
+    );
+    /* background-color: #ff9f85; */
+}
+
+.darkTheme {
+    background: #0a182e;
+}
+
+.list {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5em;
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+}
+
+.listItem {
+    list-style: none;
+    font-size: 1.2rem;
+}
+
+i {
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}

@@ -1,0 +1,25 @@
+.container {
+    margin-bottom: 3em;
+}
+
+.container > * {
+    /* width: 60%; */
+    /* max-width: 700px; */
+    margin-bottom: 0.5em;
+}
+
+.divider {
+    width: 80%;
+    margin: 1em auto 0;
+}
+
+.img {
+    height: auto;
+    max-width: 100%;
+}
+
+.title,
+.author,
+.byline {
+    color: #d78c9b;
+}
