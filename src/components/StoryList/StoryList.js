@@ -1,16 +1,17 @@
-import { useContext } from "react"
-import { Context } from "../../Context"
 import Story from "../Story/Story"
 import styles from "./StoryList.module.css"
+import { useContext } from "react"
+import { Context } from "../../Context"
 
-function StoryList() {
-    const { articles } = useContext(Context)
-
+function StoryList({ data }) {
+    const { favArr } = useContext(Context)
     return (
         <div className={styles.container}>
-            {articles.map((article) => (
-                <Story data={article} key={article.created_date} />
+            {data.map((datum) => (
+                <Story data={datum} key={datum.uri} />
             ))}
+            {console.log("I rendered")}
+            {console.log(favArr)}
         </div>
     )
 }

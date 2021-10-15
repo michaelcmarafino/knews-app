@@ -3,7 +3,8 @@
     /* overflow: hidden; */
     /* max-height: 400px; */
     padding: 1rem 1.5rem;
-    background-color: rgba(5, 72, 97, 0.85);
+    background-color: rgba(5, 72, 97, 0.8);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
 }
 
@@ -37,4 +38,15 @@
 .author,
 .byline {
     color: #d78c9b;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.favIcon,
+.unfavIcon {
+    width: 35px;
+    height: 35px;
 }

@@ -1,3 +1,23 @@
 .container {
-    max-width: 700px;
+    width: 16rem;
+    background-color: rgba(215, 140, 155, 0.5);
+    height: 75vh;
+    position: fixed;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border: 2px solid rgba(5, 72, 97, 0.8);
+    color: rgba(5, 72, 97, 0.8);
+    transition: all ease-in-out 250ms;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.expanded {
+    height: 85vh;
+    margin-top: -60px;
+}
+
+.title {
+    text-decoration: underline;
 }

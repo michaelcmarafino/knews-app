@@ -1,5 +1,4 @@
 nav {
-    height: 30%;
     /* background: #778da9; */
     /* background: rgb(255, 161, 93); */
     background: linear-gradient(
@@ -19,6 +18,7 @@ nav {
 .list {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 1.5em;
 }
 
