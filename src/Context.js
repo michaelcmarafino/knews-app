@@ -3,13 +3,14 @@ import React, { useState, useEffect } from "react"
 const Context = React.createContext()
 
 function ContextProvider({ children }) {
-    const [darkMode, setDarkMode] = useState(false)
+    // const [darkMode, setDarkMode] = useState(false)
     const [articles, setArticles] = useState([])
     const [favArr, setFavArr] = useState([])
+    console.log(favArr)
 
-    function toggleDarkMode() {
-        setDarkMode((prev) => !prev)
-    }
+    // function toggleDarkMode() {
+    //     setDarkMode((prev) => !prev)
+    // }
 
     // function handleFavClick(id) {
     //     // let newItem = articles.filter((article) => article.uri === id)
@@ -17,10 +18,10 @@ function ContextProvider({ children }) {
     //     setIsFav(!isFav)
     // }
 
-    const url = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+    const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
     useEffect(() => {
-        fetch(url)
+        fetch(TOP_STORIES_URL)
             .then((res) => {
                 if (!res.ok) {
                     throw Error("Couldn't get your articles")
@@ -39,8 +40,6 @@ function ContextProvider({ children }) {
     return (
         <Context.Provider
             value={{
-                darkMode,
-                toggleDarkMode,
                 articles,
                 setFavArr,
                 favArr,

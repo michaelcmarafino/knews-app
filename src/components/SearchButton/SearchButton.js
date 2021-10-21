@@ -1,6 +1,7 @@
-import styles from "./Button.module.css"
+import styles from "./SearchButton.module.css"
 import { ReactComponent as SearchIcon } from "../../images/search.svg"
 import cx from "classnames"
+import { Link } from "react-router-dom"
 
 export default function Button({ navBtn, sidebarBtn }) {
     return (
@@ -9,7 +10,9 @@ export default function Button({ navBtn, sidebarBtn }) {
                 [styles.navBtn]: navBtn,
                 [styles.sidebarBtn]: sidebarBtn,
             })}>
-            <SearchIcon />
+            <Link to="/results">
+                <SearchIcon />
+            </Link>
         </button>
     )
 }
