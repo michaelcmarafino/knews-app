@@ -1,9 +1,9 @@
 import styles from "./Sidebar.module.css"
 import Search from "../Search/Search"
 import { useState, useLayoutEffect } from "react"
-import { Link } from "react-router-dom"
 import cx from "classnames"
-import Button from "../Button/Button"
+import SearchButton from "../SearchButton/SearchButton"
+import { Link } from "react-router-dom"
 
 export default function SideBar({ favArr }) {
     const [top, setTop] = useState(true)
@@ -31,10 +31,12 @@ export default function SideBar({ favArr }) {
             })}>
             {!top && (
                 <Search sidebarSearch>
-                    <Button sidebarBtn></Button>
+                    <SearchButton sidebarBtn></SearchButton>
                 </Search>
             )}
-            <h2 className={styles.title}>Favorites</h2>
+            <Link to="/favorites">
+                <h2 className={styles.title}>Favorites</h2>
+            </Link>
             {favArr.map((fav) => {
                 return (
                     <h4>

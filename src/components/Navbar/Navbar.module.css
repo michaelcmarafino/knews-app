@@ -37,3 +37,8 @@ i {
     font-size: 2rem;
     cursor: pointer;
 }
+
+.homeIcon {
+    width: 30px;
+    height: 30px;
+}

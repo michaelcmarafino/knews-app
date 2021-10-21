@@ -3,7 +3,8 @@ import styles from "./Navbar.module.css"
 import { Link } from "react-router-dom"
 import { Context } from "../../Context"
 import Search from "../Search/Search"
-import Button from "../Button/Button"
+import SearchButton from "../SearchButton/SearchButton"
+import { ReactComponent as HomeIcon } from "../../images/knews.svg"
 
 function Navbar() {
     const { darkMode, articles } = useContext(Context)
@@ -13,16 +14,19 @@ function Navbar() {
         <nav className={darkMode ? styles.darkTheme : styles.lightTheme}>
             <ul className={styles.list}>
                 <Link className={styles.link} to="/">
-                    <li className={styles.listItem}>Knews</li>
+                    <li className={styles.listItem}>
+                        <HomeIcon className={styles.homeIcon} />
+                    </li>
                 </Link>
                 <Link className={styles.link} to="/trending">
                     <li className={styles.listItem}>Trending</li>
                 </Link>
+                <Link className={styles.link} to="/favorites">
+                    <li className={styles.listItem}>Favorites</li>
+                </Link>
 
                 <Search>
-                    <Link to="/results">
-                        <Button navBtn />
-                    </Link>
+                    <SearchButton navBtn />
                 </Search>
 
                 {/* <div onClick={toggleDarkMode}>
