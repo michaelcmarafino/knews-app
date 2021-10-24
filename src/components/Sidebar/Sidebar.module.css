@@ -11,6 +11,7 @@
     color: rgba(5, 72, 97, 0.8);
     transition: all ease-in-out 250ms;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+    overflow: scroll;
 }
 
 .expanded {
@@ -19,5 +20,22 @@
 }
 
 .title {
+    font-size: 1.6rem;
+    margin-bottom: 0.4em;
+}
+
+.flexContainer {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+    padding: 0 0.8em;
+}
+
+.favLink {
+    color: #fff;
+}
+
+.favLink:hover,
+.favLink:focus {
     text-decoration: underline;
 }

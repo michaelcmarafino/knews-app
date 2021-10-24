@@ -39,9 +39,11 @@ export default function SideBar({ favArr }) {
             </Link>
             {favArr.map((fav) => {
                 return (
-                    <h4>
-                        <a href={fav.url}> {fav.title}</a>
-                    </h4>
+                    <p key={fav.url} className={styles.flexContainer}>
+                        <a href={fav.url} className={styles.favLink}>
+                            {fav.title}
+                        </a>
+                    </p>
                 )
             })}
         </div>

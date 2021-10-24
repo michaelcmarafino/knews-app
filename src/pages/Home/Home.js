@@ -6,6 +6,7 @@ import { Context } from "../../Context"
 
 function Home() {
     const { articles, favArr } = useContext(Context)
+    console.log(`This is the favArr from home page: ${favArr}`)
     return (
         <div className={styles.home}>
             <SideBar favArr={favArr} />
