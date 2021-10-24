@@ -10,6 +10,7 @@ function Story({ data, trending }) {
     const [isFav, setIsFav] = useState(false)
 
     const handleFav = () => {
+        // set favorite to the opposite of what it is
         setIsFav(!isFav)
         !isFav
             ? setFavArr([...favArr, data])
@@ -60,10 +61,10 @@ function Story({ data, trending }) {
                     <span className={styles.author}>{data.section}</span>
                 </h2>
                 <div onClick={handleFav}>
-                    {isFav ? (
-                        <FavIcon className={styles.favIcon} />
-                    ) : (
+                    {!isFav ? (
                         <UnfavIcon className={styles.favIcon} />
+                    ) : (
+                        <FavIcon className={styles.favIcon} />
                     )}
                 </div>
             </footer>
