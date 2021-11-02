@@ -1,9 +1,15 @@
 import Story from "../Story/Story"
 import styles from "./StoryList.module.css"
+import cx from "classnames"
 
-function StoryList({ data, trending }) {
+function StoryList({ data, trendingPageStyles, favoritePageStyles }) {
     return (
-        <div className={styles.container}>
+        <div
+            className={cx({
+                [styles.container]: true,
+                [styles.favoritePageStyles]: favoritePageStyles,
+                [styles.trendingPageStyles]: trendingPageStyles,
+            })}>
             {data.map((datum) => (
                 <Story data={datum} key={datum.uri} />
             ))}

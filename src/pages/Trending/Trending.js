@@ -5,12 +5,13 @@ import { useContext } from "react"
 import { Context } from "../../Context"
 
 export default function Trending() {
-    const { favArr, trendingArticles } = useContext(Context)
+    const { trendingArticles } = useContext(Context)
 
     return (
         <div className={styles.trending}>
-            <SideBar favArr={favArr} />
-            <StoryList trending data={trendingArticles} />
+            <h1 className={styles.title}>Trending</h1>
+            <SideBar />
+            <StoryList trendingPageStyles data={trendingArticles} />
         </div>
     )
 }

@@ -5,13 +5,14 @@ const Context = React.createContext()
 function ContextProvider({ children }) {
     // const [darkMode, setDarkMode] = useState(false)
     const [articles, setArticles] = useState([])
+    const [trendingArticles, setTrendingArticles] = useState([])
+    const [favArr, setFavArr] = useState([])
+    const [searchResults, setSearchResults] = useState([])
     // const [favArr, setFavArr] = useState(() => {
     //     const saved = localStorage.getItem("favArr")
     //     const initialValue = JSON.parse(saved)
     //     return initialValue || []
     // })
-    const [favArr, setFavArr] = useState([])
-    const [trendingArticles, setTrendingArticles] = useState([])
 
     const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
@@ -27,21 +28,22 @@ function ContextProvider({ children }) {
     //     setIsFav(!isFav)
     // }
 
-    // useEffect(() => {
-    //     console.log("this is the 1st useEffect in story.js")
-    //     const localStorageData = localStorage.getItem("favArr")
-    //     localStorageData
-    //         ? setFavArr(JSON.parse(localStorageData))
-    //         : setFavArr([])
-    // }, [])
+    useEffect(() => {
+        const localStorageData = localStorage.getItem("favArr")
+        // let localStorageArr = JSON.parse(localStorageData)
+        // if (localStorageArr.filter((item) => item.indexOf !== -1)) {
+        //     return setFavArr(localStorageArr)
+        // } else {
+        //     return setFavArr((prev) => prev)
+        // }
+        localStorageData
+            ? setFavArr(JSON.parse(localStorageData))
+            : setFavArr([])
+    }, [])
 
-    // useEffect(() => {
-    //     console.log(
-    //         "this is the 2nd useEffect in story.js",
-    //         localStorage.getItem("favArr")
-    //     )
-    //     localStorage.setItem("favArr", JSON.stringify(favArr))
-    // }, [])
+    useEffect(() => {
+        localStorage.setItem("favArr", JSON.stringify(favArr))
+    }, [favArr])
 
     useEffect(() => {
         fetch(TOP_STORIES_URL)
@@ -85,6 +87,8 @@ function ContextProvider({ children }) {
                 setFavArr,
                 favArr,
                 trendingArticles,
+                searchResults,
+                setSearchResults,
             }}>
             {children}
         </Context.Provider>

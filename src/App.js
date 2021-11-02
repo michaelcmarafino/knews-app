@@ -10,20 +10,22 @@ function App() {
     return (
         <div>
             <Navbar />
-            <Switch>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-                <Route path="/trending">
-                    <Trending />
-                </Route>
-                <Route path="/results">
-                    <SearchResults />
-                </Route>
-                <Route path="/favorites">
-                    <Favorites />
-                </Route>
-            </Switch>
+            <div className="app-container">
+                <Switch>
+                    <Route exact path="/">
+                        <Home />
+                    </Route>
+                    <Route path="/trending">
+                        <Trending />
+                    </Route>
+                    <Route path="/results">
+                        <SearchResults />
+                    </Route>
+                    <Route path="/favorites">
+                        <Favorites />
+                    </Route>
+                </Switch>
+            </div>
         </div>
     )
 }

@@ -5,11 +5,11 @@ import { useContext } from "react"
 import { Context } from "../../Context"
 
 function Home() {
-    const { articles, favArr } = useContext(Context)
-    console.log(`This is the favArr from home page: ${favArr}`)
+    const { articles } = useContext(Context)
     return (
         <div className={styles.home}>
-            <SideBar favArr={favArr} />
+            <h1 className={styles.title}>Top Stories</h1>
+            <SideBar />
             <StoryList data={articles} />
         </div>
     )

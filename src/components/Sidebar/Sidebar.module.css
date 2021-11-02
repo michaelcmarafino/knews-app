@@ -24,18 +24,34 @@
     margin-bottom: 0.4em;
 }
 
+.titleContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
 .flexContainer {
     display: flex;
     flex-direction: column;
     margin-bottom: 1em;
-    padding: 0 0.8em;
+    padding: 0 1.2em;
 }
 
 .favLink {
     color: #fff;
+    font-size: 0.8rem;
+    text-transform: uppercase;
 }
 
 .favLink:hover,
 .favLink:focus {
     text-decoration: underline;
+}
+
+.removeBtn {
+    padding: 5px;
+}
+
+.removeBtn:hover,
+.removeBtn:focus {
+    cursor: pointer;
 }

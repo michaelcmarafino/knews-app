@@ -9,12 +9,30 @@ function Story({ data, trending }) {
     const { setFavArr, favArr } = useContext(Context)
     const [isFav, setIsFav] = useState(false)
 
-    const handleFav = () => {
+    const handleFav = (e) => {
         // set favorite to the opposite of what it is
         setIsFav(!isFav)
+
+        // if it is a favorite, add it to the favArr, if it isnt then filter out
         !isFav
             ? setFavArr([...favArr, data])
             : setFavArr((prevArr) => prevArr.filter((item) => item !== data))
+        // if (localStorage.getItem("favArr").length >= 1 && favArr.length >= 1) {
+        //     let localStorageFavs = localStorage.getItem("favArr")
+        //     console.log(localStorageFavs)
+        //     let localStorageFavsArr = JSON.parse(localStorageFavs)
+        //     console.log(localStorageFavsArr)
+        //     let localStorageFavsIds = localStorageFavsArr.map(
+        //         (localStorageFav) => localStorageFav.uri
+        //     )
+        //     console.log(localStorageFavsIds)
+        //     let favArrUri = favArr.map((fav) => fav.uri)
+        //     for (let id of localStorageFavsIds) {
+        //         if (favArrUri.includes(id)) {
+        //             setFavArr((prev) => prev.filter((uri) => uri !== id))
+        //         }
+        //     }
+        // }
     }
 
     useEffect(() => {
@@ -60,7 +78,7 @@ function Story({ data, trending }) {
                     filed to:{" "}
                     <span className={styles.author}>{data.section}</span>
                 </h2>
-                <div onClick={handleFav}>
+                <div onClick={handleFav} name={data.uri}>
                     {!isFav ? (
                         <UnfavIcon className={styles.favIcon} />
                     ) : (
