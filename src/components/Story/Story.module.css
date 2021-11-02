@@ -7,6 +7,9 @@
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .trending {
@@ -46,6 +49,15 @@
 .author,
 .byline {
     color: #d78c9b;
+}
+
+.title:hover,
+.title:focus {
+    text-decoration: underline;
+}
+
+.abstract {
+    font-weight: normal;
 }
 
 .footer {

@@ -5,14 +5,15 @@ import { Link } from "react-router-dom"
 
 export default function Button({ navBtn, sidebarBtn }) {
     return (
-        <button
-            className={cx({
-                [styles.navBtn]: navBtn,
-                [styles.sidebarBtn]: sidebarBtn,
-            })}>
-            <Link to="/results">
+        <Link to="/results">
+            <button
+                type="submit"
+                className={cx({
+                    [styles.navBtn]: navBtn,
+                    [styles.sidebarBtn]: sidebarBtn,
+                })}>
                 <SearchIcon />
-            </Link>
-        </button>
+            </button>
+        </Link>
     )
 }

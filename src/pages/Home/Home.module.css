@@ -2,11 +2,16 @@
     /* background: #415a77; */
     /* background-color: #054861; */
     width: 100%;
-    padding: 2em 1em;
+    padding: 0 1em;
     color: #fff;
     /* background-color: rgba(5, 72, 97, 0.8); */
     /* display: flex; */
     /* justify-content: space-between; */
     /* justify-content: flex-end; */
     /* align-items: flex-end; */
+}
+
+.title {
+    color: black;
+    text-align: center;
 }
