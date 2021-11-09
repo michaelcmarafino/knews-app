@@ -12,7 +12,7 @@ export default function Button({ navBtn, sidebarBtn }) {
                     [styles.navBtn]: navBtn,
                     [styles.sidebarBtn]: sidebarBtn,
                 })}>
-                <SearchIcon />
+                <SearchIcon title="Search Articles" />
             </button>
         </Link>
     )

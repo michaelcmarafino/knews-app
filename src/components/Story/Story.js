@@ -17,22 +17,6 @@ function Story({ data, trending }) {
         !isFav
             ? setFavArr([...favArr, data])
             : setFavArr((prevArr) => prevArr.filter((item) => item !== data))
-        // if (localStorage.getItem("favArr").length >= 1 && favArr.length >= 1) {
-        //     let localStorageFavs = localStorage.getItem("favArr")
-        //     console.log(localStorageFavs)
-        //     let localStorageFavsArr = JSON.parse(localStorageFavs)
-        //     console.log(localStorageFavsArr)
-        //     let localStorageFavsIds = localStorageFavsArr.map(
-        //         (localStorageFav) => localStorageFav.uri
-        //     )
-        //     console.log(localStorageFavsIds)
-        //     let favArrUri = favArr.map((fav) => fav.uri)
-        //     for (let id of localStorageFavsIds) {
-        //         if (favArrUri.includes(id)) {
-        //             setFavArr((prev) => prev.filter((uri) => uri !== id))
-        //         }
-        //     }
-        // }
     }
 
     useEffect(() => {
@@ -71,8 +55,8 @@ function Story({ data, trending }) {
                     {data.title}
                 </a>
             </h1>
-            <h4 className={styles.abstract}>{data.abstract}</h4>
-            <h5 className={styles.byline}>{data.byline}</h5>
+            <h2 className={styles.abstract}>{data.abstract}</h2>
+            <h3 className={styles.byline}>{data.byline}</h3>
             <footer className={styles.footer}>
                 <h2>
                     filed to:{" "}
@@ -80,9 +64,15 @@ function Story({ data, trending }) {
                 </h2>
                 <div onClick={handleFav} name={data.uri}>
                     {!isFav ? (
-                        <UnfavIcon className={styles.favIcon} />
+                        <UnfavIcon
+                            title="Add Favorite"
+                            className={styles.favIcon}
+                        />
                     ) : (
-                        <FavIcon className={styles.favIcon} />
+                        <FavIcon
+                            title="Remove Favorite"
+                            className={styles.favIcon}
+                        />
                     )}
                 </div>
             </footer>

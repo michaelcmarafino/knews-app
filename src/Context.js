@@ -8,13 +8,10 @@ function ContextProvider({ children }) {
     const [trendingArticles, setTrendingArticles] = useState([])
     const [favArr, setFavArr] = useState([])
     const [searchResults, setSearchResults] = useState([])
-    // const [favArr, setFavArr] = useState(() => {
-    //     const saved = localStorage.getItem("favArr")
-    //     const initialValue = JSON.parse(saved)
-    //     return initialValue || []
-    // })
+    const [topStorySubject, setTopStorySubject] = useState("us")
+    const [pageNumber, setPageNumber] = useState(1)
 
-    const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/home.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+    const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/${topStorySubject}.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
     const TRENDING_URL = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
@@ -22,20 +19,8 @@ function ContextProvider({ children }) {
     //     setDarkMode((prev) => !prev)
     // }
 
-    // function handleFavClick(id) {
-    //     // let newItem = articles.filter((article) => article.uri === id)
-    //     // return setFav((prev) => [...prev, newItem])
-    //     setIsFav(!isFav)
-    // }
-
     useEffect(() => {
         const localStorageData = localStorage.getItem("favArr")
-        // let localStorageArr = JSON.parse(localStorageData)
-        // if (localStorageArr.filter((item) => item.indexOf !== -1)) {
-        //     return setFavArr(localStorageArr)
-        // } else {
-        //     return setFavArr((prev) => prev)
-        // }
         localStorageData
             ? setFavArr(JSON.parse(localStorageData))
             : setFavArr([])
@@ -58,9 +43,12 @@ function ContextProvider({ children }) {
             })
             .catch((err) => {
                 console.log(err)
+                if (err === 429) {
+                    console.log("Too many requests by you")
+                }
                 // Place default error page here - make component
             })
-    }, [])
+    }, [TOP_STORIES_URL])
 
     useEffect(() => {
         fetch(TRENDING_URL)
@@ -89,6 +77,10 @@ function ContextProvider({ children }) {
                 trendingArticles,
                 searchResults,
                 setSearchResults,
+                topStorySubject,
+                setTopStorySubject,
+                pageNumber,
+                setPageNumber,
             }}>
             {children}
         </Context.Provider>
