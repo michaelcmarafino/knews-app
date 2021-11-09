@@ -12,17 +12,24 @@ function Navbar() {
 
     return (
         <nav className={darkMode ? styles.darkTheme : styles.lightTheme}>
-            <ul className={styles.list}>
+            <ul className={`${styles.list} app-container`}>
                 <Link className={styles.link} to="/">
                     <li className={styles.listItem}>
-                        <HomeIcon className={styles.homeIcon} />
+                        <HomeIcon
+                            className={styles.homeIcon}
+                            title="Top Stories"
+                        />
                     </li>
                 </Link>
                 <Link className={styles.link} to="/trending">
-                    <li className={styles.listItem}>Trending</li>
+                    <li className={styles.listItem} title="Trending">
+                        Trending
+                    </li>
                 </Link>
                 <Link className={styles.link} to="/favorites">
-                    <li className={styles.listItem}>Favorites</li>
+                    <li className={styles.listItem} title="Favorites">
+                        Favorites
+                    </li>
                 </Link>
 
                 <Search>

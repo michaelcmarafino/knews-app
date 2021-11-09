@@ -6,32 +6,19 @@ import SearchButton from "../SearchButton/SearchButton"
 import { Link } from "react-router-dom"
 import { Context } from "../../Context"
 
-export default function SideBar() {
+export default function SideBar({ expandedHome }) {
     const [top, setTop] = useState(true)
     const { favArr, setFavArr } = useContext(Context)
 
     function handleRemove() {
-        // setFavArr((prevArr) => prevArr.filter((arrItem) => arrItem !== favArr))
-        console.log("handle remove")
-
         localStorage.clear()
         setFavArr([])
-
-        // const localStorageData = localStorage.getItem("favArr")
-        // if (localStorageData) {
-        //     const localStorageArr = JSON.parse(localStorageData)
-        //     const index = localStorageArr.findIndex((item) => item === favArr)
-
-        //     setFavArr(localStorageArr.splice(index, 1))
-
-        // setFavArr(JSON.parse(localStorageData))
-        // }
     }
 
     useLayoutEffect(() => {
         const handleScroll = (e) => {
             let scrolled = document.scrollingElement.scrollTop
-            if (scrolled >= 100) {
+            if (scrolled >= 130) {
                 setTop(false)
             } else {
                 setTop(true)
@@ -48,6 +35,7 @@ export default function SideBar() {
             className={cx({
                 [styles.container]: true,
                 [styles.expanded]: !top,
+                [styles.expandedHome]: expandedHome && !top,
             })}>
             {!top && (
                 <Search sidebarSearch>
@@ -56,10 +44,15 @@ export default function SideBar() {
             )}
             <div className={styles.titleContainer}>
                 <Link to="/favorites">
-                    <h2 className={styles.title}>Favorites</h2>
+                    <h2 className={styles.title} title="Favorites">
+                        Favorites
+                    </h2>
                 </Link>
-                <span className={styles.removeBtn} onClick={handleRemove}>
-                    X
+                <span
+                    className={styles.removeBtn}
+                    title="Clear All"
+                    onClick={handleRemove}>
+                    x
                 </span>
             </div>
 

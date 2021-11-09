@@ -3,7 +3,8 @@
     /* overflow: hidden; */
     /* max-height: 400px; */
     padding: 1rem 1.5rem;
-    background-color: rgba(5, 72, 97, 0.8);
+    /* background-color: rgba(5, 72, 97, 0.8); */
+    background-color: var(--primary-color);
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
     border-radius: 20px;
     width: 100%;
@@ -32,6 +33,10 @@
     overflow: hidden;
 }
 
+.abstract {
+    line-height: 1.4;
+}
+
 .divider {
     width: 80%;
     margin: 1em auto 0;
@@ -48,7 +53,8 @@
 .title,
 .author,
 .byline {
-    color: #d78c9b;
+    /* color: #d78c9b; */
+    color: var(--fourth-color);
 }
 
 .title:hover,

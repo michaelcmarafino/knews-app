@@ -1,6 +1,7 @@
 .container {
     width: 16rem;
-    background-color: rgba(215, 140, 155, 0.5);
+    /* background-color: rgba(215, 140, 155, 0.5); */
+    background-color: var(--fourth-color);
     height: 75vh;
     position: fixed;
     border-radius: 20px;
@@ -8,7 +9,8 @@
     flex-direction: column;
     text-align: center;
     border: 2px solid rgba(5, 72, 97, 0.8);
-    color: rgba(5, 72, 97, 0.8);
+    /* color: rgba(5, 72, 97, 0.8); */
+    color: var(--secondary-color);
     transition: all ease-in-out 250ms;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
     overflow: scroll;
@@ -16,12 +18,18 @@
 
 .expanded {
     height: 85vh;
-    margin-top: -60px;
+    margin-top: -80px;
+}
+
+.expandedHome {
+    height: 85vh;
+    margin-top: -150px;
 }
 
 .title {
     font-size: 1.6rem;
     margin-bottom: 0.4em;
+    color: var(--primary-color);
 }
 
 .titleContainer {
@@ -38,8 +46,8 @@
 
 .favLink {
     color: #fff;
-    font-size: 0.8rem;
-    text-transform: uppercase;
+    font-size: 0.95rem;
+    text-transform: lowercase;
 }
 
 .favLink:hover,

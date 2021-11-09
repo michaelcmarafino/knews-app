@@ -1,9 +1,23 @@
-import React from "react"
+import styles from "./Result.module.css"
 
-export default function Result() {
+export default function Result({ datum }) {
+    const date = new Date(datum.pub_date)
     return (
-        <div>
-            <h3>I am a search result</h3>
+        <div className={styles.container}>
+            <h3 className={styles.title}>
+                <a
+                    href={datum.web_url}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    {datum.headline.main}
+                </a>
+            </h3>
+            <h4>{datum.abstract}</h4>
+            <h4>{datum.byline.original}</h4>
+            <p>
+                filed to: {datum.section_name} on{" "}
+                {date.toLocaleDateString("en-US")}
+            </p>
         </div>
     )
 }

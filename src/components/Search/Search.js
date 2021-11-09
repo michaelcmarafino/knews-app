@@ -15,7 +15,7 @@ export default function Search({ children, sidebarSearch, navSearch }) {
         if (!query) return e.preventDefault()
         e.key === "Enter" && e.preventDefault()
         fetch(
-            `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&api-key=${process.env.REACT_APP_NYT_API_KEY}`
+            `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}`
         )
             .then((res) => {
                 if (!res.ok) {
@@ -30,6 +30,7 @@ export default function Search({ children, sidebarSearch, navSearch }) {
                 console.log(err)
                 // Place default error page here - make component
             })
+        setQuery("")
     }
 
     return (
