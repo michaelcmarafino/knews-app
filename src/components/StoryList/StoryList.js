@@ -1,5 +1,6 @@
 import Story from "../Story/Story"
 import styles from "./StoryList.module.css"
+import Loading from "../Loading/Loading"
 import cx from "classnames"
 
 function StoryList({ data, trendingPageStyles, favoritePageStyles }) {
@@ -10,9 +11,11 @@ function StoryList({ data, trendingPageStyles, favoritePageStyles }) {
                 [styles.favoritePageStyles]: favoritePageStyles,
                 [styles.trendingPageStyles]: trendingPageStyles,
             })}>
-            {data.map((datum) => (
-                <Story data={datum} key={datum.uri} />
-            ))}
+            {data.length === 0 ? (
+                <Loading />
+            ) : (
+                data.map((datum) => <Story data={datum} key={datum.uri} />)
+            )}
             {console.log("I rendered the StoryList")}
         </div>
     )

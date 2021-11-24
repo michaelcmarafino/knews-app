@@ -1,34 +1,19 @@
 import styles from "./Sidebar.module.css"
 import Search from "../Search/Search"
-import { useState, useLayoutEffect, useContext } from "react"
+import { useContext } from "react"
 import cx from "classnames"
 import SearchButton from "../SearchButton/SearchButton"
 import { Link } from "react-router-dom"
 import { Context } from "../../Context"
+import useScrollEffect from "../../hooks/useScrollEffect"
 
 export default function SideBar({ expandedHome }) {
-    const [top, setTop] = useState(true)
     const { favArr, setFavArr } = useContext(Context)
-
+    const [top] = useScrollEffect()
     function handleRemove() {
         localStorage.clear()
         setFavArr([])
     }
-
-    useLayoutEffect(() => {
-        const handleScroll = (e) => {
-            let scrolled = document.scrollingElement.scrollTop
-            if (scrolled >= 130) {
-                setTop(false)
-            } else {
-                setTop(true)
-            }
-        }
-        document.addEventListener("scroll", handleScroll)
-        return () => {
-            document.removeEventListener("scroll", handleScroll)
-        }
-    }, [])
 
     return (
         <div

@@ -5,15 +5,19 @@ const Context = React.createContext()
 function ContextProvider({ children }) {
     // const [darkMode, setDarkMode] = useState(false)
     const [articles, setArticles] = useState([])
-    const [trendingArticles, setTrendingArticles] = useState([])
     const [favArr, setFavArr] = useState([])
     const [searchResults, setSearchResults] = useState([])
-    const [topStorySubject, setTopStorySubject] = useState("us")
-    const [pageNumber, setPageNumber] = useState(1)
+    const [topStorySubject, setTopStorySubject] = useState({
+        filterTerm: "home",
+        displayTerm: "Home",
+    })
+    const [pageNumber, setPageNumber] = useState(0)
+    const [query, setQuery] = useState("")
+    const [isSearchLoading, setIsSearchLoading] = useState(false)
 
-    const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/${topStorySubject}.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+    const [isLoading, setIsLoading] = useState(false)
 
-    const TRENDING_URL = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+    const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/${topStorySubject.filterTerm}.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
     // function toggleDarkMode() {
     //     setDarkMode((prev) => !prev)
@@ -50,37 +54,23 @@ function ContextProvider({ children }) {
             })
     }, [TOP_STORIES_URL])
 
-    useEffect(() => {
-        fetch(TRENDING_URL)
-            .then((res) => {
-                if (!res.ok) {
-                    throw Error(
-                        "Couldn't get your trending articles. Please try again"
-                    )
-                }
-                return res.json()
-            })
-            .then((data) => {
-                setTrendingArticles(data.results)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }, [])
-
     return (
         <Context.Provider
             value={{
                 articles,
-                setFavArr,
+                setArticles,
                 favArr,
-                trendingArticles,
+                setFavArr,
                 searchResults,
                 setSearchResults,
                 topStorySubject,
                 setTopStorySubject,
                 pageNumber,
                 setPageNumber,
+                query,
+                setQuery,
+                isSearchLoading,
+                setIsSearchLoading,
             }}>
             {children}
         </Context.Provider>

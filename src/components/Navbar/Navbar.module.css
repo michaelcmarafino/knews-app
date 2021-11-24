@@ -4,6 +4,7 @@ nav {
     /* background: linear-gradient(90deg, #d78c9b 0%, #ff9f85 100%); */
     /* background-color: #ff9f85; */
     background-color: var(--accent-color);
+    box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.2);
 }
 
 .darkTheme {
@@ -21,10 +22,21 @@ nav {
     color: white;
 }
 
+.link:first-of-type {
+    margin-right: auto;
+}
+
 .listItem {
     list-style: none;
     font-size: 1.5rem;
-    padding: 0.9em;
+    border-radius: 5px;
+    padding: 0.4em;
+    margin: 0.5em;
+}
+
+.listItem:hover,
+.listItem:focus {
+    background-color: darkgray;
 }
 
 i {
