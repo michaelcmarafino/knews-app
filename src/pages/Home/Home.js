@@ -7,7 +7,7 @@ import { Context } from "../../Context"
 
 function Home() {
     const { articles, topStorySubject } = useContext(Context)
-    var options = {
+    const options = {
         weekday: "long",
         year: "numeric",
         month: "long",
@@ -15,43 +15,53 @@ function Home() {
     }
     const date = new Date().toLocaleDateString("en-US", options)
     const filterBtnText = [
-        "arts",
-        "books",
-        "fashion",
-        "food",
-        "health",
-        "home",
-        "insider",
-        "magazine",
-        "movies",
-        "nyregion",
-        "obituaries",
-        "opinion",
-        "politics",
-        "realestate",
-        "science",
-        "sports",
-        "sundayreview",
-        "technology",
-        "theater",
-        "travel",
-        "upshot",
-        "us",
-        "world",
+        { filterTerm: "arts", displayTerm: "Arts" },
+        { filterTerm: "books", displayTerm: "Books" },
+        { filterTerm: "business", displayTerm: "Business" },
+        { filterTerm: "fashion", displayTerm: "Fashion" },
+        { filterTerm: "food", displayTerm: "Food" },
+        { filterTerm: "health", displayTerm: "Health" },
+        { filterTerm: "home", displayTerm: "Home" },
+        { filterTerm: "insider", displayTerm: "Insider" },
+        { filterTerm: "movies", displayTerm: "Movies" },
+        { filterTerm: "nyregion", displayTerm: "NY Region" },
+        { filterTerm: "obituaries", displayTerm: "Obituaries" },
+        { filterTerm: "opinion", displayTerm: "Opinion" },
+        { filterTerm: "politics", displayTerm: "Politics" },
+        { filterTerm: "realestate", displayTerm: "Real Estate" },
+        { filterTerm: "science", displayTerm: "Science" },
+        { filterTerm: "sports", displayTerm: "Sports" },
+        { filterTerm: "sundayreview", displayTerm: "Sunday Review" },
+        { filterTerm: "technology", displayTerm: "Tech" },
+        { filterTerm: "theater", displayTerm: "Theater" },
+        { filterTerm: "travel", displayTerm: "Travel" },
+        { filterTerm: "upshot", displayTerm: "Upshot" },
+        { filterTerm: "us", displayTerm: "United States" },
+        { filterTerm: "world", displayTerm: "World" },
     ]
 
-    const btns = filterBtnText.map((b) => <FilterButton text={b} />)
+    const btns = filterBtnText.map((b) => (
+        <FilterButton key={b.filterTerm} btnInfo={b} />
+    ))
+
+    // const titleText = filterBtnText.filter((item) =>
+    //     item.filterTerm.includes(topStorySubject)
+    // )
 
     return (
         <div className={styles.home}>
             <h1 className={styles.title}>
-                Top Stories in{" "}
-                <span className={styles.section}>{topStorySubject}</span> on{" "}
-                {date}
+                Top Stories for{" "}
+                <span className={styles.section}>
+                    {topStorySubject.displayTerm}
+                </span>{" "}
+                on {date}
             </h1>
             <div className={styles.filterBtnsContainer}>{btns}</div>
-            <SideBar expandedHome />
-            <StoryList data={articles} />
+            <div className={styles.flexContainer}>
+                <SideBar className={styles.sidebar} expandedHome />
+                <StoryList data={articles} />
+            </div>
         </div>
     )
 }
