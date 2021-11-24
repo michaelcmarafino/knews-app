@@ -1,19 +1,16 @@
 import styles from "./Search.module.css"
 import cx from "classnames"
 import { Context } from "../../Context"
-import { useContext, useState } from "react"
+import { useContext } from "react"
 
 export default function Search({ children, sidebarSearch, navSearch }) {
-    const { setSearchResults } = useContext(Context)
-    const [query, setQuery] = useState("")
-
-    function handleChange(e) {
-        setQuery(e.target.value)
-    }
+    const { setSearchResults, query, setQuery, setIsSearchLoading } =
+        useContext(Context)
 
     const searchArticles = (e) => {
-        if (!query) return e.preventDefault()
+        if (!query) return
         e.key === "Enter" && e.preventDefault()
+        setIsSearchLoading(true)
         fetch(
             `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}`
         )
@@ -25,6 +22,7 @@ export default function Search({ children, sidebarSearch, navSearch }) {
             })
             .then((data) => {
                 setSearchResults(data.response.docs)
+                setIsSearchLoading(false)
             })
             .catch((err) => {
                 console.log(err)
@@ -43,7 +41,7 @@ export default function Search({ children, sidebarSearch, navSearch }) {
                 type="search"
                 placeholder="Search articles..."
                 value={query}
-                onChange={handleChange}
+                onChange={(e) => setQuery(e.target.value)}
             />
             {children}
         </form>

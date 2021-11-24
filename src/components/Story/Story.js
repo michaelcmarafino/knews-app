@@ -11,7 +11,7 @@ function Story({ data, trending }) {
 
     const handleFav = (e) => {
         // set favorite to the opposite of what it is
-        setIsFav(!isFav)
+        setIsFav((prev) => !prev)
 
         // if it is a favorite, add it to the favArr, if it isnt then filter out
         !isFav
@@ -34,14 +34,22 @@ function Story({ data, trending }) {
                 {data.id ? (
                     <img
                         className={styles.img}
-                        // src={data.media["media-metadata"][2].url}
+                        src={
+                            data.media[0]?.["media-metadata"]?.[2]?.url
+                                ? data.media[0]["media-metadata"][2].url
+                                : "https://upload.wikimedia.org/wikipedia/commons/4/40/New_York_Times_logo_variation.jpg"
+                        }
                         alt={data.media.caption}
                     />
                 ) : (
                     <img
                         className={styles.img}
-                        alt={data.multimedia[0].caption}
-                        src={data.multimedia[0].url}
+                        alt={""}
+                        src={
+                            data.multimedia?.[0]?.url
+                                ? data.multimedia[0].url
+                                : "https://upload.wikimedia.org/wikipedia/commons/4/40/New_York_Times_logo_variation.jpg"
+                        }
                     />
                 )}
             </div>

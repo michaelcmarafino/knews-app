@@ -11,7 +11,7 @@ export default function Favorites() {
             {favArr.length ? (
                 <StoryList favoritePageStyles data={favArr} />
             ) : (
-                <h1 style={{ color: "black" }}>
+                <h1 style={{ color: "black", height: "100vh" }}>
                     Add a favorite to see it listed here...
                 </h1>
             )}

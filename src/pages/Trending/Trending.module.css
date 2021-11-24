@@ -6,5 +6,9 @@
 
 .title {
     text-align: center;
-    color: black;
+    color: var(--accent-color);
+}
+
+.flexContainer {
+    display: flex;
 }

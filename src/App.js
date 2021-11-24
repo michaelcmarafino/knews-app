@@ -5,6 +5,8 @@ import Home from "./pages/Home/Home"
 import SearchResults from "./pages/SearchResults/SearchResults"
 import Trending from "./pages/Trending/Trending"
 import Favorites from "./pages/Favorites/Favorites"
+import TopPageButton from "./components/TopPageButton/TopPageButton"
+import Footer from "./components/Footer/Footer"
 
 function App() {
     return (
@@ -25,7 +27,9 @@ function App() {
                         <Favorites />
                     </Route>
                 </Switch>
+                <TopPageButton />
             </div>
+            <Footer />
         </div>
     )
 }
