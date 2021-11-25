@@ -3,7 +3,7 @@ import { ReactComponent as SearchIcon } from "../../images/search.svg"
 import cx from "classnames"
 import { Link } from "react-router-dom"
 import { Context } from "../../Context"
-import { useContext } from "react/cjs/react.development"
+import { useContext } from "react"
 
 export default function Button({ navBtn, sidebarBtn }) {
     const { query } = useContext(Context)
