@@ -1,10 +1,13 @@
 import styles from "./FilterButton.module.css"
 import { useContext } from "react"
 import { Context } from "../../Context"
+import cx from "classnames"
 
-export default function FilterButton({ btnInfo }) {
-    const { setTopStorySubject, setArticles } = useContext(Context)
-    const handleClick = () => {
+export default function FilterButton({ btnInfo, index }) {
+    const { setTopStorySubject, setArticles, topStorySubject } =
+        useContext(Context)
+
+    const handleClick = (e) => {
         setArticles([])
         setTopStorySubject({
             filterTerm: btnInfo.filterTerm,
@@ -14,7 +17,11 @@ export default function FilterButton({ btnInfo }) {
 
     return (
         <button
-            className={styles.btn}
+            className={cx({
+                [styles.btn]: true,
+                [styles.selected]:
+                    topStorySubject.displayTerm === btnInfo.displayTerm,
+            })}
             onClick={handleClick}
             title={btnInfo.displayTerm}>
             {btnInfo.displayTerm}

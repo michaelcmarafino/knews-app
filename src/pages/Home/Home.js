@@ -2,11 +2,18 @@ import styles from "./Home.module.css"
 import StoryList from "../../components/StoryList/StoryList"
 import SideBar from "../../components/Sidebar/Sidebar"
 import FilterButton from "../../components/FilterButton/FilterButton"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { Context } from "../../Context"
+import { APP_TITLE } from "../../helpers/globalVariables"
 
-function Home() {
+export default function Home() {
     const { articles, topStorySubject } = useContext(Context)
+
+    //change tab title when rendering
+    useEffect(() => {
+        document.title = `${APP_TITLE} - What's happening now`
+    }, [])
+
     const options = {
         weekday: "long",
         year: "numeric",
@@ -51,7 +58,7 @@ function Home() {
     return (
         <div className={styles.home}>
             <h1 className={styles.title}>
-                Top Stories for{" "}
+                Top Stories in{" "}
                 <span className={styles.section}>
                     {topStorySubject.displayTerm}
                 </span>{" "}
@@ -65,5 +72,3 @@ function Home() {
         </div>
     )
 }
-
-export default Home

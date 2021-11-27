@@ -12,17 +12,44 @@
     flex-direction: column;
 }
 
+.container > p {
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
 .container > * {
-    margin-bottom: 1em;
+    margin-bottom: 0.8em;
 }
 
-.socials {
-    color: var(--accent-color);
+.flexContainer {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
 }
 
-.netlify {
-    color: #fff;
+.flexContainer > * {
+    margin: 0 0.5em;
+}
+
+.socials li {
+    cursor: pointer;
+}
+
+.icons:hover,
+.icons:active,
+.icons:focus {
+    fill: var(--primary-color);
+}
+
+.btns {
     background-color: #054861;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.btns > a {
     padding: 0.5rem 1.5rem;
+    display: inline-block;
+    color: #fff;
+    letter-spacing: 0.5px;
 }

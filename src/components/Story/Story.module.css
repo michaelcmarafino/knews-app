@@ -13,11 +13,6 @@
     justify-content: space-between;
 }
 
-.trending {
-    width: 48%;
-    margin-right: 0.8em;
-}
-
 .container > * {
     /* width: 60%; */
     /* max-width: 700px; */
@@ -51,6 +46,15 @@
     margin: 0 auto;
 }
 
+.content {
+    margin-right: 6rem;
+    margin-left: 2rem;
+}
+
+.content > * {
+    margin-bottom: 0.5em;
+}
+
 .title,
 .author,
 .byline {
@@ -65,11 +69,13 @@
 
 .abstract {
     font-weight: normal;
+    font-size: 1.3rem;
 }
 
 .footer {
     display: flex;
     justify-content: space-between;
+    margin: 0 2rem;
 }
 
 .favIcon,

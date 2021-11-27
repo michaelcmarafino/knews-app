@@ -7,6 +7,7 @@ import Trending from "./pages/Trending/Trending"
 import Favorites from "./pages/Favorites/Favorites"
 import TopPageButton from "./components/TopPageButton/TopPageButton"
 import Footer from "./components/Footer/Footer"
+import Page404 from "./pages/Page404/Page404"
 
 function App() {
     return (
@@ -25,6 +26,9 @@ function App() {
                     </Route>
                     <Route path="/favorites">
                         <Favorites />
+                    </Route>
+                    <Route>
+                        <Page404 />
                     </Route>
                 </Switch>
                 <TopPageButton />

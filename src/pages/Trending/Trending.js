@@ -3,10 +3,16 @@ import StoryList from "../../components/StoryList/StoryList"
 import SideBar from "../../components/Sidebar/Sidebar"
 import { useEffect, useState } from "react"
 import Loading from "../../components/Loading/Loading"
+import { APP_TITLE } from "../../helpers/globalVariables"
 
 export default function Trending() {
     const [trendingArticles, setTrendingArticles] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+
+    //change tab title when rendering
+    useEffect(() => {
+        document.title = `Trending - ${APP_TITLE}`
+    }, [])
 
     const TRENDING_URL = `https://api.nytimes.com/svc/mostpopular/v2/viewed/1.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 

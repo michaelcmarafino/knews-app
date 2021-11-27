@@ -15,8 +15,6 @@ function ContextProvider({ children }) {
     const [query, setQuery] = useState("")
     const [isSearchLoading, setIsSearchLoading] = useState(false)
 
-    const [isLoading, setIsLoading] = useState(false)
-
     const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/${topStorySubject.filterTerm}.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
     // function toggleDarkMode() {
@@ -42,13 +40,16 @@ function ContextProvider({ children }) {
                 }
                 return res.json()
             })
-            .then((data) => {
-                setArticles(data.results)
+            .then((dataResults) => {
+                const data = dataResults.results.filter(
+                    (item) => item.section !== "admin"
+                )
+                setArticles(data)
             })
             .catch((err) => {
                 console.log(err)
                 if (err === 429) {
-                    console.log("Too many requests by you")
+                    console.log("Too many requests")
                 }
                 // Place default error page here - make component
             })
