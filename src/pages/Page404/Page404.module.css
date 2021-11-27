@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    text-align: center;
+}
+
+.notFound {
+    font-size: 4rem;
+    margin-bottom: 1em;
+}
+
+.returnHome {
+    font-size: 1.5rem;
+}
