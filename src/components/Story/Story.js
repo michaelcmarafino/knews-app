@@ -6,26 +6,22 @@ import { ReactComponent as UnfavIcon } from "../../images/unfav.svg"
 import cx from "classnames"
 
 function Story({ data }) {
-    const { setFavArr, favArr } = useContext(Context)
+    const { setFavArr, favArr, topStorySubject } = useContext(Context)
     const [isFav, setIsFav] = useState(false)
 
     const handleFav = (e) => {
-        // set favorite to the opposite of what it is
+        // console.log(
+        //     "clicked and this is what I got",
+        //     e.target.parentNode.getAttribute("name")
+        // )
+        if (isFav) {
+            const localStorageData = JSON.parse(localStorage.getItem("favArr"))
+            const newLocal = localStorageData.filter(
+                (item) => item.uri !== e.target.parentNode.getAttribute("name")
+            )
+            setFavArr(newLocal)
+        }
         setIsFav((prev) => !prev)
-
-        const localStorageData = JSON.parse(localStorage.getItem("favArr"))
-        // const currentLocalStorage = localStorageData.map(item => item.uri)
-        // if(isFav && currentLocalStorage.includes(e.target.name)) {
-
-        // }
-        const filtered = localStorageData.filter(
-            (item) => item.uri !== e.target.name
-        )
-        localStorage.setItem("favArr", JSON.stringify(filtered))
-
-        console.log("name:", e.target.getAttribute("name"))
-
-        // if it is a favorite, add it to the favArr, if it isnt then filter out
         !isFav
             ? setFavArr([...favArr, data])
             : setFavArr((prevArr) => prevArr.filter((item) => item !== data))
@@ -55,7 +51,7 @@ function Story({ data }) {
                 ) : (
                     <img
                         className={styles.img}
-                        alt={""}
+                        alt={data.title}
                         src={
                             data.multimedia?.[0]?.url
                                 ? data.multimedia[0].url
@@ -81,7 +77,9 @@ function Story({ data }) {
             <footer className={styles.footer}>
                 <h2>
                     filed to:{" "}
-                    <span className={styles.author}>{data.section}</span>
+                    <span className={styles.author}>
+                        {topStorySubject.displayTerm}
+                    </span>
                 </h2>
                 <div onClick={handleFav} name={data.uri}>
                     {!isFav ? (

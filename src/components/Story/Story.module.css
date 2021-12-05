@@ -14,11 +14,7 @@
 }
 
 .container > * {
-    /* width: 60%; */
-    /* max-width: 700px; */
     margin-bottom: 0.5em;
-    /* width: 18vw;
-    height: 3rem; */
 }
 
 .imageContainer {
@@ -58,12 +54,16 @@
 .title,
 .author,
 .byline {
-    /* color: #d78c9b; */
     color: var(--accent-color);
 }
 
+.author {
+    text-transform: lowercase;
+}
+
 .title:hover,
-.title:focus {
+.title:focus,
+.title:active {
     text-decoration: underline;
 }
 

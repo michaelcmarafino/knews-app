@@ -1,6 +1,6 @@
 import styles from "./Sidebar.module.css"
 import Search from "../Search/Search"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import cx from "classnames"
 import SearchButton from "../SearchButton/SearchButton"
 import { Link } from "react-router-dom"
@@ -14,6 +14,11 @@ export default function SideBar({ expandedHome }) {
         localStorage.clear()
         setFavArr([])
     }
+
+    // useEffect(() => {
+    //     let itemId = favArr.map((item) => item.uri)
+    //     itemId.includes(data.uri) && setIsFav(true)
+    // }, [favArr])
 
     return (
         <div

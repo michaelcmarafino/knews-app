@@ -2,17 +2,29 @@ import styles from "./Search.module.css"
 import cx from "classnames"
 import { Context } from "../../Context"
 import { useContext } from "react"
+import { useHistory } from "react-router"
 
 export default function Search({ children, sidebarSearch, navSearch }) {
     const { setSearchResults, query, setQuery, setIsSearchLoading } =
         useContext(Context)
 
+    const history = useHistory()
+
     const searchArticles = (e) => {
-        if (!query) return
+        if (!query || query.length === 0 || !query.trim()) return
         e.key === "Enter" && e.preventDefault()
+        const params = new URLSearchParams()
+        if (query) {
+            params.append("q", query)
+        } else {
+            params.delete("q")
+        }
+        history.push({ search: params.toString() })
+
         setIsSearchLoading(true)
+        window.scrollTo(0, 0)
         fetch(
-            `https://api.nytimes.com/svc/search/v2/articlesearch.json?q=${query}&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}`
+            `https://api.nytimes.com/svc/search/v2/articlesearch.json?q="${query}"&newest&&api-key=${process.env.REACT_APP_NYT_API_KEY}`
         )
             .then((res) => {
                 if (!res.ok) {
@@ -23,6 +35,7 @@ export default function Search({ children, sidebarSearch, navSearch }) {
             .then((data) => {
                 setSearchResults(data.response.docs)
                 setIsSearchLoading(false)
+                console.log("Got data for Search bar")
             })
             .catch((err) => {
                 console.log(err)

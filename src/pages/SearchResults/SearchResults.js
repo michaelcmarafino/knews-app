@@ -16,7 +16,13 @@ export default function SearchResults() {
 
     return (
         <div className={styles.container}>
-            <h2>Showing Results For:</h2>
+            <h2>
+                Showing Results for "
+                {window.location.href.substring(
+                    window.location.href.indexOf("=") + 1
+                )}
+                "
+            </h2>
             <div className={styles.flexContainer}>
                 <Sidebar />
                 {isSearchLoading ? (

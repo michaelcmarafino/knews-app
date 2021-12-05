@@ -2,25 +2,40 @@ import styles from "./Result.module.css"
 
 export default function Result({ datum }) {
     const date = new Date(datum.pub_date)
+    const nytimes = "https://nytimes.com/"
     return (
         <div className={styles.flexContainer}>
-            <div className={styles.imgContainer}>
-                <img src={datum.multimedia?.[0]?.url} alt="" />
+            <div
+                className={styles.imgContainer}
+                style={{
+                    flex:
+                        parseInt(nytimes + datum.multimedia?.[0]?.width) /
+                        parseInt(nytimes + datum.multimedia?.[0]?.height),
+                }}>
+                <img
+                    className={styles.img}
+                    src={
+                        datum.multimedia?.[0]?.url
+                            ? nytimes + datum.multimedia[0].url
+                            : "https://upload.wikimedia.org/wikipedia/commons/4/40/New_York_Times_logo_variation.jpg"
+                    }
+                    alt=""
+                />
             </div>
-            <div className={styles.infoCotainer}>
-                <h3 className={styles.title}>
-                    <a
-                        href={datum.web_url}
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        {datum.headline.main}
-                    </a>
-                </h3>
-                <h4>{datum.abstract}</h4>
-                <h4>{datum.byline.original}</h4>
+            <div className={styles.infoContainer}>
+                <a
+                    className={styles.title}
+                    href={datum.web_url}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    {datum.headline.main}
+                </a>
+                <p className={styles.abstract}>{datum.abstract}</p>
+                <h4 className={styles.author}>{datum.byline.original}</h4>
                 <p>
-                    filed to: {datum.section_name} on{" "}
-                    {date.toLocaleDateString("en-US")}
+                    filed to:{" "}
+                    <span className={styles.section}>{datum.section_name}</span>{" "}
+                    on {date.toLocaleDateString("en-US")}
                 </p>
             </div>
         </div>

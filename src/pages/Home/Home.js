@@ -7,12 +7,38 @@ import { Context } from "../../Context"
 import { APP_TITLE } from "../../helpers/globalVariables"
 
 export default function Home() {
-    const { articles, topStorySubject } = useContext(Context)
+    const { articles, topStorySubject, setArticles } = useContext(Context)
 
     //change tab title when rendering
     useEffect(() => {
         document.title = `${APP_TITLE} - What's happening now`
     }, [])
+
+    const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/${topStorySubject.filterTerm}.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
+
+    useEffect(() => {
+        fetch(TOP_STORIES_URL)
+            .then((res) => {
+                if (!res.ok) {
+                    throw Error("Couldn't get your articles")
+                }
+                return res.json()
+            })
+            .then((dataResults) => {
+                const data = dataResults.results
+                    .filter((item) => item.section !== "admin")
+                    .filter((item) => item.item_type !== "Promo")
+                setArticles(data)
+                console.log("Got data for home page")
+            })
+            .catch((err) => {
+                console.log(err)
+                if (err === 429) {
+                    console.log("Too many requests")
+                }
+                // Place default error page here - make component
+            })
+    }, [TOP_STORIES_URL])
 
     const options = {
         weekday: "long",

@@ -14,7 +14,9 @@ function StoryList({ data, trendingPageStyles, favoritePageStyles }) {
             {data.length === 0 ? (
                 <Loading />
             ) : (
-                data.map((datum) => <Story data={datum} key={datum.uri} />)
+                data
+                    .slice(0, 10)
+                    .map((datum) => <Story data={datum} key={datum.uri} />)
             )}
             {console.log("I rendered the StoryList")}
         </div>

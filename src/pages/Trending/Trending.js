@@ -30,6 +30,7 @@ export default function Trending() {
             .then((data) => {
                 setTrendingArticles(data.results)
                 setIsLoading(false)
+                console.log("Got data for trending page")
             })
             .catch((err) => {
                 console.log(err)
