@@ -1,10 +1,10 @@
 import React from "react"
 import Navbar from "./components/Navbar/Navbar"
 import { Switch, Route } from "react-router-dom"
-import Home from "./pages/Home/Home"
-import SearchResults from "./pages/SearchResults/SearchResults"
-import Trending from "./pages/Trending/Trending"
-import Favorites from "./pages/Favorites/Favorites"
+import HomePage from "./pages/HomePage/HomePage"
+import SearchResultsPage from "./pages/SearchResultsPage/SearchResultsPage"
+import TrendingPage from "./pages/TrendingPage/TrendingPage"
+import FavoritesPage from "./pages/FavoritesPage/FavoritesPage"
 import TopPageButton from "./components/TopPageButton/TopPageButton"
 import Footer from "./components/Footer/Footer"
 import Page404 from "./pages/Page404/Page404"
@@ -16,16 +16,16 @@ function App() {
             <div className="app-container">
                 <Switch>
                     <Route exact path="/">
-                        <Home />
+                        <HomePage />
                     </Route>
                     <Route path="/trending">
-                        <Trending />
+                        <TrendingPage />
                     </Route>
                     <Route path="/results">
-                        <SearchResults />
+                        <SearchResultsPage />
                     </Route>
                     <Route path="/favorites">
-                        <Favorites />
+                        <FavoritesPage />
                     </Route>
                     <Route>
                         <Page404 />

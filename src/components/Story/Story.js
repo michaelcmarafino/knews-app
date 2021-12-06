@@ -1,42 +1,9 @@
 import styles from "./Story.module.css"
-import { useContext, useState, useEffect } from "react"
-import { Context } from "../../Context"
-import { ReactComponent as FavIcon } from "../../images/fav.svg"
-import { ReactComponent as UnfavIcon } from "../../images/unfav.svg"
-import cx from "classnames"
+import StoryFooter from "../StoryFooter/StoryFooter"
 
 function Story({ data }) {
-    const { setFavArr, favArr, topStorySubject } = useContext(Context)
-    const [isFav, setIsFav] = useState(false)
-
-    const handleFav = (e) => {
-        // console.log(
-        //     "clicked and this is what I got",
-        //     e.target.parentNode.getAttribute("name")
-        // )
-        if (isFav) {
-            const localStorageData = JSON.parse(localStorage.getItem("favArr"))
-            const newLocal = localStorageData.filter(
-                (item) => item.uri !== e.target.parentNode.getAttribute("name")
-            )
-            setFavArr(newLocal)
-        }
-        setIsFav((prev) => !prev)
-        !isFav
-            ? setFavArr([...favArr, data])
-            : setFavArr((prevArr) => prevArr.filter((item) => item !== data))
-    }
-
-    useEffect(() => {
-        let itemId = favArr.map((item) => item.uri)
-        itemId.includes(data.uri) && setIsFav(true)
-    }, [])
-
     return (
-        <div
-            className={cx({
-                [styles.container]: true,
-            })}>
+        <div className={styles.container}>
             <div className={styles.imageContainer}>
                 {data.id ? (
                     <img
@@ -72,30 +39,9 @@ function Story({ data }) {
                 </h1>
                 <h2 className={styles.abstract}>{data.abstract}</h2>
                 <h3 className={styles.byline}>{data.byline}</h3>
+                <StoryFooter data={data} />
             </div>
 
-            <footer className={styles.footer}>
-                <h2>
-                    filed to:{" "}
-                    <span className={styles.author}>
-                        {topStorySubject.displayTerm}
-                    </span>
-                </h2>
-                <div onClick={handleFav} name={data.uri}>
-                    {!isFav ? (
-                        <UnfavIcon
-                            title="Add Favorite"
-                            className={styles.favIcon}
-                        />
-                    ) : (
-                        <FavIcon
-                            name={data.uri}
-                            title="Remove Favorite"
-                            className={styles.favIcon}
-                        />
-                    )}
-                </div>
-            </footer>
             <hr className={styles.divider} />
         </div>
     )

@@ -1,6 +1,6 @@
 import styles from "./Sidebar.module.css"
 import Search from "../Search/Search"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import cx from "classnames"
 import SearchButton from "../SearchButton/SearchButton"
 import { Link } from "react-router-dom"
@@ -48,9 +48,15 @@ export default function SideBar({ expandedHome }) {
 
             {favArr.map((fav) => {
                 return (
-                    <p key={fav.url} className={styles.flexContainer}>
-                        <a href={fav.url} className={styles.favLink}>
-                            {fav.title}
+                    <p
+                        key={fav?.url || fav?.web_url}
+                        className={styles.flexContainer}>
+                        <a
+                            href={fav?.url || fav?.web_url}
+                            className={styles.favLink}
+                            target="_blank"
+                            rel="noopener noreferrer">
+                            {fav?.title || fav?.headline.main}
                         </a>
                         {/* <span
                             className={styles.removeBtn}

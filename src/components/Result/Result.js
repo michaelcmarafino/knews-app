@@ -1,7 +1,7 @@
+import StoryFooter from "../StoryFooter/StoryFooter"
 import styles from "./Result.module.css"
 
 export default function Result({ datum }) {
-    const date = new Date(datum.pub_date)
     const nytimes = "https://nytimes.com/"
     return (
         <div className={styles.flexContainer}>
@@ -32,11 +32,7 @@ export default function Result({ datum }) {
                 </a>
                 <p className={styles.abstract}>{datum.abstract}</p>
                 <h4 className={styles.author}>{datum.byline.original}</h4>
-                <p>
-                    filed to:{" "}
-                    <span className={styles.section}>{datum.section_name}</span>{" "}
-                    on {date.toLocaleDateString("en-US")}
-                </p>
+                <StoryFooter data={datum} />
             </div>
         </div>
     )

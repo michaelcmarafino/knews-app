@@ -43,7 +43,7 @@
 }
 
 .content {
-    margin-right: 6rem;
+    margin-right: 5rem;
     margin-left: 2rem;
 }
 
@@ -70,16 +70,4 @@
 .abstract {
     font-weight: normal;
     font-size: 1.3rem;
-}
-
-.footer {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 2rem;
-}
-
-.favIcon,
-.unfavIcon {
-    width: 35px;
-    height: 35px;
 }

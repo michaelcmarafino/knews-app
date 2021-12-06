@@ -52,11 +52,6 @@
     margin-bottom: 0;
 }
 
-.section {
-    color: var(--accent-color);
-    text-transform: lowercase;
-}
-
 .abstract {
     letter-spacing: 0.5px;
     font-size: 1.3rem;

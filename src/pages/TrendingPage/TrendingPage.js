@@ -1,11 +1,11 @@
-import styles from "./Trending.module.css"
+import styles from "./TrendingPage.module.css"
 import StoryList from "../../components/StoryList/StoryList"
 import SideBar from "../../components/Sidebar/Sidebar"
 import { useEffect, useState } from "react"
 import Loading from "../../components/Loading/Loading"
 import { APP_TITLE } from "../../helpers/globalVariables"
 
-export default function Trending() {
+export default function TrendingPage() {
     const [trendingArticles, setTrendingArticles] = useState([])
     const [isLoading, setIsLoading] = useState(false)
 

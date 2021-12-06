@@ -1,4 +1,4 @@
-import styles from "./SearchResults.module.css"
+import styles from "./SearchResultsPage.module.css"
 import Sidebar from "../../components/Sidebar/Sidebar"
 import ResultList from "../../components/ResultList/ResultList"
 import Loading from "../../components/Loading/Loading"
@@ -6,7 +6,7 @@ import { Context } from "../../Context"
 import { useContext, useEffect } from "react"
 import { APP_TITLE } from "../../helpers/globalVariables"
 
-export default function SearchResults() {
+export default function SearchResultsPage() {
     const { searchResults, isSearchLoading } = useContext(Context)
 
     //change tab title when rendering

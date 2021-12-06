@@ -1,4 +1,4 @@
-import styles from "./Home.module.css"
+import styles from "./HomePage.module.css"
 import StoryList from "../../components/StoryList/StoryList"
 import SideBar from "../../components/Sidebar/Sidebar"
 import FilterButton from "../../components/FilterButton/FilterButton"
@@ -6,7 +6,7 @@ import { useContext, useEffect } from "react"
 import { Context } from "../../Context"
 import { APP_TITLE } from "../../helpers/globalVariables"
 
-export default function Home() {
+export default function HomePage() {
     const { articles, topStorySubject, setArticles } = useContext(Context)
 
     //change tab title when rendering
