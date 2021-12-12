@@ -1,30 +1,32 @@
 import styles from "./Search.module.css"
 import cx from "classnames"
 import { Context } from "../../Context"
-import { useContext } from "react"
+import { useContext, useRef } from "react"
 import { useHistory } from "react-router"
+import { ReactComponent as SearchIcon } from "../../images/search.svg"
 
-export default function Search({ children, sidebarSearch, navSearch }) {
-    const { setSearchResults, query, setQuery, setIsSearchLoading } =
-        useContext(Context)
-
+export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
+    const { setSearchResults, setIsSearchLoading } = useContext(Context)
+    const query = useRef()
     const history = useHistory()
 
-    const searchArticles = (e) => {
-        if (!query || query.length === 0 || !query.trim()) return
-        e.key === "Enter" && e.preventDefault()
+    const handleSubmit = (e) => {
+        // if (!query || query.length === 0 || !query.trim()) return
+        // e.key === "Enter" &&
+        e.preventDefault()
+        history.push("/results")
         const params = new URLSearchParams()
-        if (query) {
-            params.append("q", query)
+        if (query.current.value.length > 1) {
+            params.append("q", query.current.value)
         } else {
             params.delete("q")
         }
         history.push({ search: params.toString() })
-
+        console.log(query.current.value)
         setIsSearchLoading(true)
         window.scrollTo(0, 0)
         fetch(
-            `https://api.nytimes.com/svc/search/v2/articlesearch.json?q="${query}"&newest&&api-key=${process.env.REACT_APP_NYT_API_KEY}`
+            `https://api.nytimes.com/svc/search/v2/articlesearch.json?q="${query.current.value}"&newest&&api-key=${process.env.REACT_APP_NYT_API_KEY}`
         )
             .then((res) => {
                 if (!res.ok) {
@@ -41,11 +43,11 @@ export default function Search({ children, sidebarSearch, navSearch }) {
                 console.log(err)
                 // Place default error page here - make component
             })
-        setQuery("")
+        query.current.value = ""
     }
 
     return (
-        <form onClick={searchArticles}>
+        <form onSubmit={handleSubmit}>
             <input
                 className={cx({
                     [styles.input]: true,
@@ -53,10 +55,22 @@ export default function Search({ children, sidebarSearch, navSearch }) {
                 })}
                 type="search"
                 placeholder="Search articles..."
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                required
+                ref={query}
+                // value={query}
+                // onChange={(e) => setQuery(e.target.value)}
             />
-            {children}
+            {/* <Link
+                // to={!query || !query.trim() ? location.pathname : "/results"}
+                to={"/results"}> */}
+            <button
+                type="submit"
+                className={cx({
+                    [styles.navBtn]: navBtn,
+                    [styles.sidebarBtn]: sidebarBtn,
+                })}>
+                <SearchIcon title="Search Articles" />
+            </button>
         </form>
     )
 }

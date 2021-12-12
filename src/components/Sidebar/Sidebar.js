@@ -28,9 +28,9 @@ export default function SideBar({ expandedHome }) {
                 [styles.expandedHome]: expandedHome && !top,
             })}>
             {!top && (
-                <Search sidebarSearch>
-                    <SearchButton sidebarBtn></SearchButton>
-                </Search>
+                <Search sidebarSearch sidebarBtn />
+                //     <SearchButton sidebarBtn></SearchButton>
+                // </Search>
             )}
             <div className={styles.titleContainer}>
                 <Link to="/favorites">

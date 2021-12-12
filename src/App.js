@@ -1,4 +1,3 @@
-import React from "react"
 import Navbar from "./components/Navbar/Navbar"
 import { Switch, Route } from "react-router-dom"
 import HomePage from "./pages/HomePage/HomePage"

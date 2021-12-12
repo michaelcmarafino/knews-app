@@ -16,7 +16,7 @@ export default function TopPageButton() {
             onClick={scrollToTop}
             style={{ display: isVisible ? "none" : "block" }}>
             <span className={styles.icon}>
-                <TopPageIcon />
+                <TopPageIcon title="Top of Page" />
             </span>
         </div>
     )

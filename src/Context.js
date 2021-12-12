@@ -10,7 +10,6 @@ function ContextProvider({ children }) {
         filterTerm: "home",
         displayTerm: "Home",
     })
-    const [query, setQuery] = useState("")
     const [isSearchLoading, setIsSearchLoading] = useState(false)
 
     useEffect(() => {
@@ -35,8 +34,6 @@ function ContextProvider({ children }) {
                 setSearchResults,
                 topStorySubject,
                 setTopStorySubject,
-                query,
-                setQuery,
                 isSearchLoading,
                 setIsSearchLoading,
             }}>

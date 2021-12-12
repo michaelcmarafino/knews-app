@@ -27,9 +27,9 @@ export default function Navbar() {
                     </li>
                 </Link>
 
-                <Search>
-                    <SearchButton navBtn />
-                </Search>
+                <Search navBtn />
+                {/* <SearchButton navBtn />
+                </Search> */}
             </ul>
         </nav>
     )
