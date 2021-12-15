@@ -6,11 +6,12 @@ import { useHistory } from "react-router"
 import { ReactComponent as SearchIcon } from "../../images/search.svg"
 
 export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
-    const { setSearchResults, setIsSearchLoading } = useContext(Context)
+    const { setSearchResults, setIsSearchLoading, setResultPageNumber } =
+        useContext(Context)
     const query = useRef()
     const history = useHistory()
 
-    const handleSubmit = (e) => {
+    const fetchResults = (e) => {
         // if (!query || query.length === 0 || !query.trim()) return
         // e.key === "Enter" &&
         e.preventDefault()
@@ -25,8 +26,9 @@ export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
         console.log(query.current.value)
         setIsSearchLoading(true)
         window.scrollTo(0, 0)
+        // `https://api.nytimes.com/svc/search/v2/articlesearch.json?q="${query.current.value}"&newest&&api-key=${process.env.REACT_APP_NYT_API_KEY}`
         fetch(
-            `https://api.nytimes.com/svc/search/v2/articlesearch.json?q="${query.current.value}"&newest&&api-key=${process.env.REACT_APP_NYT_API_KEY}`
+            `https://api.nytimes.com/svc/search/v2/articlesearch.json?page=0&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}&q="${query.current.value}"`
         )
             .then((res) => {
                 if (!res.ok) {
@@ -37,6 +39,7 @@ export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
             .then((data) => {
                 setSearchResults(data.response.docs)
                 setIsSearchLoading(false)
+                setResultPageNumber(0)
                 console.log("Got data for Search bar")
             })
             .catch((err) => {
@@ -47,7 +50,7 @@ export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={fetchResults}>
             <input
                 className={cx({
                     [styles.input]: true,

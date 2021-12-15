@@ -45,6 +45,7 @@
 
 .infoContainer {
     margin-left: 2em;
+    position: relative;
 }
 
 .author {

@@ -39,7 +39,7 @@ function Story({ data }) {
                 </h1>
                 <h2 className={styles.abstract}>{data.abstract}</h2>
                 <h3 className={styles.byline}>{data.byline}</h3>
-                <StoryFooter data={data} />
+                <StoryFooter bottomPos={"100px"} data={data} />
             </div>
 
             <hr className={styles.divider} />

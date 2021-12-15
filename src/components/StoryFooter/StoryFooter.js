@@ -6,7 +6,7 @@ import { ReactComponent as UnfavIcon } from "../../images/unfav.svg"
 import { useLocation } from "react-router"
 import Notification from "../Notification/Notification"
 
-export default function StoryFooter({ data }) {
+export default function StoryFooter({ data, bottomPos }) {
     const { setFavArr, favArr, topStorySubject } = useContext(Context)
     const [isFav, setIsFav] = useState(false)
     const [isNotificationOpen, setIsNotificationOpen] = useState(false)
@@ -18,7 +18,7 @@ export default function StoryFooter({ data }) {
             const interval = setInterval(() => {
                 console.log("remove the favorite!")
                 setIsNotificationOpen(false)
-            }, 2000)
+            }, 750)
             return () => clearInterval(interval)
         }
     }, [isNotificationOpen])
@@ -86,7 +86,7 @@ export default function StoryFooter({ data }) {
                     />
                 )}
             </div>
-            <Notification open={isNotificationOpen}>
+            <Notification bottomPos={bottomPos} open={isNotificationOpen}>
                 added to favorites
             </Notification>
         </footer>

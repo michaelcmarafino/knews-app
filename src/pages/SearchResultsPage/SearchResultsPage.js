@@ -28,7 +28,9 @@ export default function SearchResultsPage() {
                 {isSearchLoading ? (
                     <Loading />
                 ) : (
-                    <ResultList data={searchResults} />
+                    <div className={styles.resultsContainer}>
+                        <ResultList data={searchResults} />
+                    </div>
                 )}
             </div>
         </div>
