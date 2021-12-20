@@ -8,6 +8,7 @@ import { APP_TITLE } from "../../helpers/globalVariables"
 export default function TrendingPage() {
     const [trendingArticles, setTrendingArticles] = useState([])
     const [isLoading, setIsLoading] = useState(false)
+    const [currentPage, setCurrentPage] = useState(0)
 
     //change tab title when rendering
     useEffect(() => {
@@ -45,7 +46,12 @@ export default function TrendingPage() {
                 {isLoading ? (
                     <Loading />
                 ) : (
-                    <StoryList trendingPageStyles data={trendingArticles} />
+                    <StoryList
+                        trendingPageStyles
+                        data={trendingArticles}
+                        currentPage={currentPage}
+                        setCurrentPage={setCurrentPage}
+                    />
                 )}
             </div>
         </div>

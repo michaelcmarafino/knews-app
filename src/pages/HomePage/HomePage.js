@@ -2,12 +2,13 @@ import styles from "./HomePage.module.css"
 import StoryList from "../../components/StoryList/StoryList"
 import SideBar from "../../components/Sidebar/Sidebar"
 import FilterButton from "../../components/FilterButton/FilterButton"
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Context } from "../../Context"
 import { APP_TITLE } from "../../helpers/globalVariables"
 
 export default function HomePage() {
     const { articles, topStorySubject, setArticles } = useContext(Context)
+    const [currentPage, setCurrentPage] = useState(0)
 
     //change tab title when rendering
     useEffect(() => {
@@ -29,7 +30,9 @@ export default function HomePage() {
                     .filter((item) => item.section !== "admin")
                     .filter((item) => item.item_type !== "Promo")
                 setArticles(data)
+
                 console.log("Got data for home page")
+                console.log("current page: ", currentPage)
             })
             .catch((err) => {
                 console.log(err)
@@ -74,7 +77,11 @@ export default function HomePage() {
     ]
 
     const btns = filterBtnText.map((b) => (
-        <FilterButton key={b.filterTerm} btnInfo={b} />
+        <FilterButton
+            key={b.filterTerm}
+            btnInfo={b}
+            setCurrentPage={setCurrentPage}
+        />
     ))
 
     // const titleText = filterBtnText.filter((item) =>
@@ -93,7 +100,11 @@ export default function HomePage() {
             <div className={styles.filterBtnsContainer}>{btns}</div>
             <div className={styles.flexContainer}>
                 <SideBar className={styles.sidebar} expandedHome />
-                <StoryList data={articles} />
+                <StoryList
+                    data={articles}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </div>
         </div>
     )

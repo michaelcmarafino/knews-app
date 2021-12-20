@@ -6,8 +6,7 @@ import { useHistory } from "react-router"
 import { ReactComponent as SearchIcon } from "../../images/search.svg"
 
 export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
-    const { setSearchResults, setIsSearchLoading, setResultPageNumber } =
-        useContext(Context)
+    const { setSearchResults, setIsSearchLoading } = useContext(Context)
     const query = useRef()
     const history = useHistory()
 
@@ -39,7 +38,6 @@ export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
             .then((data) => {
                 setSearchResults(data.response.docs)
                 setIsSearchLoading(false)
-                setResultPageNumber(0)
                 console.log("Got data for Search bar")
             })
             .catch((err) => {

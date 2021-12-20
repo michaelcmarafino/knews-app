@@ -6,7 +6,7 @@ export default function Loading() {
         //     <h2 className={styles.title}>Loading...</h2>
         // </div>
         <ContentLoader
-            style={{ marginLeft: "2em" }}
+            style={{ marginLeft: "2em", marginBottom: "2em" }}
             height={1000}
             width={700}
             backgroundColor="#b8b7b7">
