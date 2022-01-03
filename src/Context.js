@@ -6,6 +6,8 @@ function ContextProvider({ children }) {
     const [articles, setArticles] = useState([])
     const [favArr, setFavArr] = useState([])
     const [searchResults, setSearchResults] = useState([])
+    const [searchTerm, setSearchTerm] = useState(null)
+    const [searchPageNumber, setSearchPageNumber] = useState(0)
     const [topStorySubject, setTopStorySubject] = useState({
         filterTerm: "home",
         displayTerm: "Home",
@@ -36,6 +38,10 @@ function ContextProvider({ children }) {
                 setTopStorySubject,
                 isSearchLoading,
                 setIsSearchLoading,
+                searchTerm,
+                setSearchTerm,
+                searchPageNumber,
+                setSearchPageNumber,
             }}>
             {children}
         </Context.Provider>

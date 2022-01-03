@@ -6,7 +6,13 @@ import { useHistory } from "react-router"
 import { ReactComponent as SearchIcon } from "../../images/search.svg"
 
 export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
-    const { setSearchResults, setIsSearchLoading } = useContext(Context)
+    const {
+        setSearchResults,
+        setIsSearchLoading,
+        setSearchTerm,
+        searchPageNumber,
+        setSearchPageNumber,
+    } = useContext(Context)
     const query = useRef()
     const history = useHistory()
 
@@ -24,10 +30,11 @@ export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
         history.push({ search: params.toString() })
         console.log(query.current.value)
         setIsSearchLoading(true)
+        setSearchTerm(query.current.value)
         window.scrollTo(0, 0)
         // `https://api.nytimes.com/svc/search/v2/articlesearch.json?q="${query.current.value}"&newest&&api-key=${process.env.REACT_APP_NYT_API_KEY}`
         fetch(
-            `https://api.nytimes.com/svc/search/v2/articlesearch.json?page=0&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}&q="${query.current.value}"`
+            `https://api.nytimes.com/svc/search/v2/articlesearch.json?page=${searchPageNumber}&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}&q="${query.current.value}"`
         )
             .then((res) => {
                 if (!res.ok) {
@@ -39,6 +46,7 @@ export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
                 setSearchResults(data.response.docs)
                 setIsSearchLoading(false)
                 console.log("Got data for Search bar")
+                setSearchPageNumber((searchPageNumber) => searchPageNumber + 1)
             })
             .catch((err) => {
                 console.log(err)
