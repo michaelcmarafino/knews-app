@@ -49,8 +49,8 @@ export default function StoryFooter({ data, bottomPos }) {
 
     useEffect(() => {
         let itemId = favArr.map((item) => item.uri)
-        itemId.includes(data.uri) && setIsFav(true)
-    }, [])
+        itemId.includes(data.uri) ? setIsFav(true) : setIsFav(false)
+    }, [favArr])
 
     return (
         <footer className={styles.footer}>
@@ -64,7 +64,9 @@ export default function StoryFooter({ data, bottomPos }) {
                 <h2>
                     filed to:{" "}
                     <span className={styles.author}>
-                        {topStorySubject.displayTerm}
+                        {pathname !== "/trending"
+                            ? topStorySubject.displayTerm
+                            : data.section}
                     </span>
                 </h2>
             )}

@@ -10,7 +10,12 @@
     height: 35px;
 }
 
-.section {
+.favIcon:hover,
+.unfavIcon:hover {
+    cursor: pointer;
+}
+
+.favIcon .section {
     color: var(--accent-color);
     text-transform: lowercase;
 }

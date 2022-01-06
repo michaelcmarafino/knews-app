@@ -1,24 +1,21 @@
 import styles from "./Sidebar.module.css"
 import Search from "../Search/Search"
-import { useContext } from "react"
-import cx from "classnames"
-import SearchButton from "../SearchButton/SearchButton"
-import { Link } from "react-router-dom"
+import { useContext, useState } from "react"
 import { Context } from "../../Context"
+import cx from "classnames"
+import { Link } from "react-router-dom"
 import useScrollEffect from "../../hooks/useScrollEffect"
+import SidebarBtn from "../SidebarBtn/SidebarBtn"
 
 export default function SideBar({ expandedHome }) {
     const { favArr, setFavArr } = useContext(Context)
-    const [top] = useScrollEffect()
-    function handleRemove() {
-        localStorage.clear()
-        setFavArr([])
-    }
 
-    // useEffect(() => {
-    //     let itemId = favArr.map((item) => item.uri)
-    //     itemId.includes(data.uri) && setIsFav(true)
-    // }, [favArr])
+    const [top] = useScrollEffect()
+    function handleRemove(e) {
+        let element = e.target.parentNode.parentNode.parentNode.id
+        let newFavArr = favArr.filter((item) => item.uri !== element)
+        setFavArr(newFavArr)
+    }
 
     return (
         <div
@@ -27,44 +24,15 @@ export default function SideBar({ expandedHome }) {
                 [styles.expanded]: !top,
                 [styles.expandedHome]: expandedHome && !top,
             })}>
-            {!top && (
-                <Search sidebarSearch sidebarBtn />
-                //     <SearchButton sidebarBtn></SearchButton>
-                // </Search>
-            )}
-            <div className={styles.titleContainer}>
-                <Link to="/favorites">
-                    <h2 className={styles.title} title="Favorites">
-                        Favorites
-                    </h2>
-                </Link>
-                <span
-                    className={styles.removeBtn}
-                    title="Clear All"
-                    onClick={handleRemove}>
-                    x
-                </span>
-            </div>
+            {!top && <Search sidebarSearch sidebarBtn />}
+            <Link to="/favorites">
+                <h2 className={styles.title} title="Favorites">
+                    Favorites
+                </h2>
+            </Link>
 
             {favArr.map((fav) => {
-                return (
-                    <p
-                        key={fav?.url || fav?.web_url}
-                        className={styles.flexContainer}>
-                        <a
-                            href={fav?.url || fav?.web_url}
-                            className={styles.favLink}
-                            target="_blank"
-                            rel="noopener noreferrer">
-                            {fav?.title || fav?.headline.main}
-                        </a>
-                        {/* <span
-                            className={styles.removeBtn}
-                            onClick={handleRemove}>
-                            X
-                        </span> */}
-                    </p>
-                )
+                return <SidebarBtn fav={fav} handleRemove={handleRemove} />
             })}
         </div>
     )

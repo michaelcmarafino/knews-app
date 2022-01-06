@@ -1,0 +1,35 @@
+.flexContainer {
+    display: flex;
+    padding: 0 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.favLink {
+    color: #fff;
+    font-size: 0.95rem;
+    width: 22ch;
+    padding: 0.5em 0;
+    /* text-transform: lowercase; */
+}
+
+.flexContainer:hover,
+.favContainer:focus {
+    background-color: darkgray;
+}
+
+.removeBtn {
+    /* margin-right: 7px; */
+    padding: 0.4em;
+}
+
+.removeBtn:hover,
+.removeBtn:focus {
+    cursor: pointer;
+}
+
+.trashIcon {
+    width: 20px;
+    height: 20px;
+}

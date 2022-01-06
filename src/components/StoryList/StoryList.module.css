@@ -18,7 +18,7 @@
 }
 
 .trendingPageStyles * {
-    margin: 0;
+    margin: 0.2em;
 }
 
 .flexContainer {
@@ -31,7 +31,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1em;
+    gap: 0.5em;
     list-style: none;
 }
 
