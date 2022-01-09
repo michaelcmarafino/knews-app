@@ -20,7 +20,10 @@ export default function SidebarBtn({ fav, handleRemove }) {
             </a>
             {isBtnShowing ? (
                 <span className={styles.removeBtn} onClick={handleRemove}>
-                    <TrashIcon className={styles.trashIcon} />
+                    <TrashIcon
+                        title="Remove Favorite"
+                        className={styles.trashIcon}
+                    />
                 </span>
             ) : null}
         </div>

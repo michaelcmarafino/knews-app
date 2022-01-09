@@ -32,7 +32,7 @@ export default function Result({ datum }) {
                 </a>
                 <p className={styles.abstract}>{datum.abstract}</p>
                 <h4 className={styles.author}>{datum.byline.original}</h4>
-                <StoryFooter bottomPos={"45px"} data={datum} />
+                <StoryFooter isResult={true} bottomPos={"45px"} data={datum} />
             </div>
         </div>
     )

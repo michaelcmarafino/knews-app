@@ -32,7 +32,13 @@ export default function SideBar({ expandedHome }) {
             </Link>
 
             {favArr.map((fav) => {
-                return <SidebarBtn fav={fav} handleRemove={handleRemove} />
+                return (
+                    <SidebarBtn
+                        key={fav.title}
+                        fav={fav}
+                        handleRemove={handleRemove}
+                    />
+                )
             })}
         </div>
     )

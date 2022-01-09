@@ -6,19 +6,19 @@ import { ReactComponent as UnfavIcon } from "../../images/unfav.svg"
 import { useLocation } from "react-router"
 import Notification from "../Notification/Notification"
 
-export default function StoryFooter({ data, bottomPos }) {
+export default function StoryFooter({ data, bottomPos, isResult }) {
     const { setFavArr, favArr, topStorySubject } = useContext(Context)
     const [isFav, setIsFav] = useState(false)
     const [isNotificationOpen, setIsNotificationOpen] = useState(false)
     const { pathname } = useLocation()
-    const date = new Date(data.pub_date)
+    const pubDate = new Date(data.pub_date)
 
     useEffect(() => {
         if (isNotificationOpen) {
             const interval = setInterval(() => {
                 console.log("remove the favorite!")
                 setIsNotificationOpen(false)
-            }, 750)
+            }, 2000)
             return () => clearInterval(interval)
         }
     }, [isNotificationOpen])
@@ -42,8 +42,14 @@ export default function StoryFooter({ data, bottomPos }) {
             }
         }
         setIsFav((prev) => !prev)
+        let todaysDate = new Date().toLocaleDateString("en-US")
+        let dataWithAddedToFavsDate = {
+            ...data,
+            date_added_by_user: todaysDate,
+            isResult: isResult,
+        }
         !isFav
-            ? setFavArr([...favArr, data])
+            ? setFavArr([...favArr, dataWithAddedToFavsDate])
             : setFavArr((prevArr) => prevArr.filter((item) => item !== data))
     }
 
@@ -58,7 +64,7 @@ export default function StoryFooter({ data, bottomPos }) {
                 <p>
                     filed to:{" "}
                     <span className={styles.section}>{data.section_name}</span>{" "}
-                    on {date.toLocaleDateString("en-US")}
+                    on {pubDate.toLocaleDateString("en-US")}
                 </p>
             ) : (
                 <h2>
@@ -77,7 +83,7 @@ export default function StoryFooter({ data, bottomPos }) {
                 {!isFav ? (
                     <UnfavIcon
                         title="Add Favorite"
-                        className={styles.favIcon}
+                        className={styles.unfavIcon}
                         onClick={() => setIsNotificationOpen(true)}
                     />
                 ) : (

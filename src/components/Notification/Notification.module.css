@@ -1,8 +1,8 @@
 .container {
     width: 170px;
     height: 60px;
-    color: white;
-    background-color: #797d81;
+    background-color: white;
+    color: #797d81;
     margin-bottom: 1rem;
     display: flex;
     justify-content: right;
@@ -11,4 +11,6 @@
     position: absolute;
     /* bottom: 100px; */
     right: -40px;
+    border-left: 4px solid #f27e7c;
+    border-radius: 3px;
 }
