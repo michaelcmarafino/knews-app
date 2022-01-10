@@ -68,3 +68,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## How to best use this App
+Open Firefox browser.  If you don't have it intall follow this link: [https://www.mozilla.org/en-US/firefox/new/](https://www.mozilla.org/en-US/firefox/new/)
+Download Bypass Paywalls Clean browser add-on: [https://addons.mozilla.org/en-US/firefox/addon/bypass-paywalls-clean/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search](https://addons.mozilla.org/en-US/firefox/addon/bypass-paywalls-clean/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search) 
