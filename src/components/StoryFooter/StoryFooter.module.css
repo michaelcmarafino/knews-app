@@ -19,3 +19,12 @@
     color: var(--accent-color);
     text-transform: lowercase;
 }
+
+.favFlexContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.favText {
+    font-size: 0.9rem;
+}

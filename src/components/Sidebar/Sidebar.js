@@ -25,10 +25,13 @@ export default function SideBar({ expandedHome }) {
                 [styles.expandedHome]: expandedHome && !top,
             })}>
             {!top && <Search sidebarSearch sidebarBtn />}
-            <Link to="/favorites">
+            <Link className={styles.linkDiv} to="/favorites">
                 <h2 className={styles.title} title="Favorites">
                     Favorites
                 </h2>
+                {favArr.length ? (
+                    <span className={styles.totalFavs}>({favArr.length})</span>
+                ) : null}
             </Link>
 
             {favArr.map((fav) => {

@@ -58,24 +58,45 @@ export default function StoryFooter({ data, bottomPos, isResult }) {
         itemId.includes(data.uri) ? setIsFav(true) : setIsFav(false)
     }, [favArr])
 
-    return (
-        <footer className={styles.footer}>
-            {pathname === "/results" ? (
+    const output = () => {
+        if (pathname === "/results") {
+            return (
                 <p>
                     filed to:{" "}
                     <span className={styles.section}>{data.section_name}</span>{" "}
                     on {pubDate.toLocaleDateString("en-US")}
                 </p>
-            ) : (
+            )
+        } else if (pathname === "/trending") {
+            return (
+                <h2>
+                    filed to:{" "}
+                    <span className={styles.author}>{data.section}</span>
+                </h2>
+            )
+        } else if (pathname === "/favorites") {
+            return (
+                <h2 className={styles.favFlexContainer}>
+                    <span className={styles.favText}>
+                        added to favs on: {data.date_added_by_user}
+                    </span>
+                </h2>
+            )
+        } else {
+            return (
                 <h2>
                     filed to:{" "}
                     <span className={styles.author}>
-                        {pathname !== "/trending"
-                            ? topStorySubject.displayTerm
-                            : data.section}
+                        {topStorySubject.displayTerm}
                     </span>
                 </h2>
-            )}
+            )
+        }
+    }
+
+    return (
+        <footer className={styles.footer}>
+            {output()}
 
             <div
                 onClick={handleFav}

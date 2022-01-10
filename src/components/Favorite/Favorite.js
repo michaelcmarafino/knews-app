@@ -3,6 +3,8 @@ import StoryFooter from "../StoryFooter/StoryFooter"
 
 export default function Favorite({ datum }) {
     const nytimes = "https://nytimes.com/"
+    const pubDate = new Date(datum?.published_date || datum?.pub_date)
+    const formattedPubDate = pubDate.toLocaleDateString("en-US")
     function imgURL() {
         if (datum.isResult && datum.multimedia?.[0]?.url) {
             return nytimes + datum.multimedia[0].url
@@ -19,11 +21,14 @@ export default function Favorite({ datum }) {
                 <a
                     target="_blank"
                     href={datum?.url || datum?.web_url}
-                    className={styles.favorite}
+                    className={styles.title}
                     rel="noreferrer">
                     {datum?.title || datum?.headline.main}
                 </a>
-                <p>{datum.abstract}</p>
+                <p className={styles.abstract}>{datum.abstract}</p>
+                <p className={styles.byline}>
+                    {datum.byline?.original || datum?.byline}
+                </p>
             </div>
             <div className={styles.imgContainer}>
                 <img
@@ -35,6 +40,9 @@ export default function Favorite({ datum }) {
                     }
                     alt={imgURL()}
                 />
+                <p className={styles.pubDate}>
+                    published on: {formattedPubDate}
+                </p>
                 <StoryFooter data={datum} />
             </div>
         </div>
