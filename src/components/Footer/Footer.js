@@ -6,7 +6,7 @@ export default function Footer() {
         <div>
             <div className={styles.top}></div>
             <div className={styles.container}>
-                <p>Proudly made in 🇺🇸by Michael Marafino</p>
+                <p>Proudly made in 🇺🇸 by Michael Marafino</p>
                 <div className={styles.socials}>
                     <ul className={styles.flexContainer}>
                         <li>

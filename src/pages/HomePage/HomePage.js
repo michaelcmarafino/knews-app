@@ -12,7 +12,7 @@ export default function HomePage() {
 
     //change tab title when rendering
     useEffect(() => {
-        document.title = `${APP_TITLE} - What's happening now`
+        document.title = `${APP_TITLE} - Stay in the Know`
     }, [])
 
     const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/${topStorySubject.filterTerm}.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
