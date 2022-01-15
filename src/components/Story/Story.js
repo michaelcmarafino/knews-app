@@ -27,7 +27,7 @@ function Story({ data }) {
                     />
                 )}
             </div>
-            <div className={styles.content}>
+            <div className={`${styles.content} ${styles.trendingContent}`}>
                 <h1>
                     <a
                         className={styles.title}

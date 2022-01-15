@@ -39,6 +39,7 @@
     font-size: 3rem;
     border-radius: 5px;
     padding: 0.5em;
+    color: white;
 }
 
 .listItem:hover,

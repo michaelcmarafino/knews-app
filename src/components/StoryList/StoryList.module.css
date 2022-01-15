@@ -54,3 +54,23 @@
 .disabled {
     display: none;
 }
+
+@media screen and (max-width: 850px) {
+    .container {
+        margin: 0 1rem;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .trendingPageStyles {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 2em;
+    }
+
+    .trendingPageStyles * {
+        margin: 0 auto 0.5rem auto;
+    }
+}

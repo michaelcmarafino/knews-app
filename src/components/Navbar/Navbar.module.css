@@ -56,19 +56,24 @@ i {
     height: 30px;
 }
 
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
     .desktopNav {
         display: none;
+    }
+
+    .mobileIconContainer,
+    .listItem {
+        padding: 0.5rem 0.8rem;
+        margin: 0;
     }
 
     .mobileNav {
         display: flex;
         justify-content: space-between;
         align-items: center;
-    }
-
-    .mobileIconContainer {
-        padding: 0.8rem;
+        /* position: -webkit-sticky;
+        position: sticky;
+        top: 0; */
     }
 
     .mobileNavBtn {

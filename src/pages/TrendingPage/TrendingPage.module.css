@@ -12,3 +12,21 @@
 .flexContainer {
     display: flex;
 }
+
+@media screen and (max-width: 850px) {
+    .trending {
+        padding: 0 6rem;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .trending {
+        padding: 0 4rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .trending {
+        padding: 0 1rem;
+    }
+}
