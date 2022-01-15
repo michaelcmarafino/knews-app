@@ -1,0 +1,48 @@
+.container {
+    background-color: var(--accent-color);
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.mobileNavBtn {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+}
+
+.mobileNavBtn:hover,
+.mobileNavBtn:focus {
+    cursor: pointer;
+}
+
+.flexContainer {
+    color: white;
+    opacity: 0.9;
+    letter-spacing: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.listItem {
+    list-style: none;
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.listItem:hover,
+.listItem:focus {
+    background-color: darkgray;
+    cursor: pointer;
+}

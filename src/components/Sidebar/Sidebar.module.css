@@ -69,3 +69,9 @@
     right: 0;
     font-size: 0.7rem;
 }
+
+@media (max-width: 850px) {
+    .container {
+        display: none;
+    }
+}

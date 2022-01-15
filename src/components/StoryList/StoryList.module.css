@@ -1,5 +1,5 @@
 .container {
-    max-width: 700px;
+    /* max-width: 700px; */
     /* margin-left: 2em; */
     display: flex;
     flex-wrap: wrap;
@@ -36,28 +36,21 @@
 }
 
 .listItem {
-    border: 1px solid var(--accent-color);
     padding: 0.5em 0.8em;
     transition: all 200ms ease-in-out;
+    border-radius: 8px;
+    background-color: rgba(34, 34, 34, 0.1);
+    letter-spacing: 0.5px;
 }
 
 .listItem:hover,
 .active {
     cursor: pointer;
-    background-color: var(--accent-color);
-    color: #fff;
+    background-color: rgba(34, 34, 34, 0.3);
+    color: var(--accent-color);
     transform: scale(1.1);
 }
 
 .disabled {
-    color: gray;
-    border: 1px solid gray;
-}
-
-.disabled:hover {
-    cursor: not-allowed;
-    background-color: rgb(244, 244, 244);
-    color: gray;
-    border: 1px solid gray;
-    transform: none;
+    display: none;
 }

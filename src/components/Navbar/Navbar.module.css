@@ -1,4 +1,4 @@
-nav {
+.container {
     /* background: #778da9; */
     /* background: rgb(255, 161, 93); */
     /* background: linear-gradient(90deg, #d78c9b 0%, #ff9f85 100%); */
@@ -11,7 +11,11 @@ nav {
     background: #0a182e;
 }
 
-.list {
+.mobileNav {
+    display: none;
+}
+
+.desktopNav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -50,4 +54,29 @@ i {
 .homeIcon {
     width: 30px;
     height: 30px;
+}
+
+@media (max-width: 700px) {
+    .desktopNav {
+        display: none;
+    }
+
+    .mobileNav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobileIconContainer {
+        padding: 0.8rem;
+    }
+
+    .mobileNavBtn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mobileNavBtn:hover {
+        cursor: pointer;
+    }
 }

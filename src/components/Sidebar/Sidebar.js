@@ -6,6 +6,7 @@ import cx from "classnames"
 import { Link } from "react-router-dom"
 import useScrollEffect from "../../hooks/useScrollEffect"
 import SidebarBtn from "../SidebarBtn/SidebarBtn"
+import { scrollToTop } from "../../helpers/helpers"
 
 export default function SideBar({ expandedHome }) {
     const { favArr, setFavArr } = useContext(Context)
@@ -25,7 +26,10 @@ export default function SideBar({ expandedHome }) {
                 [styles.expandedHome]: expandedHome && !top,
             })}>
             {!top && <Search sidebarSearch sidebarBtn />}
-            <Link className={styles.linkDiv} to="/favorites">
+            <Link
+                onClick={scrollToTop}
+                className={styles.linkDiv}
+                to="/favorites">
                 <h2 className={styles.title} title="Favorites">
                     Favorites
                 </h2>
