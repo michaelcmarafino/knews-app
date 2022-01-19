@@ -37,8 +37,6 @@ export default function Navbar() {
                 </Link>
 
                 <Search navBtn />
-                {/* <SearchButton navBtn />
-                </Search> */}
             </ul>
             <ul className={`${styles.mobileNav} app-container`}>
                 <Link className={styles.link} to="/">

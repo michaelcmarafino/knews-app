@@ -1,5 +1,6 @@
 import StoryFooter from "../StoryFooter/StoryFooter"
 import styles from "./Result.module.css"
+import nytimesLogo from "../../images/nytimesLogo.jpeg"
 
 export default function Result({ datum }) {
     const nytimes = "https://nytimes.com/"
@@ -17,7 +18,7 @@ export default function Result({ datum }) {
                     src={
                         datum.multimedia?.[0]?.url
                             ? nytimes + datum.multimedia[0].url
-                            : "https://upload.wikimedia.org/wikipedia/commons/4/40/New_York_Times_logo_variation.jpg"
+                            : nytimesLogo
                     }
                     alt=""
                 />

@@ -1,5 +1,6 @@
 import styles from "./Favorite.module.css"
 import StoryFooter from "../StoryFooter/StoryFooter"
+import nytimesLogo from "../../images/nytimesLogo.jpeg"
 
 export default function Favorite({ datum }) {
     const nytimes = "https://nytimes.com/"
@@ -33,11 +34,7 @@ export default function Favorite({ datum }) {
             <div className={styles.imgContainer}>
                 <img
                     className={styles.img}
-                    src={
-                        imgURL()
-                            ? imgURL()
-                            : "https://upload.wikimedia.org/wikipedia/commons/4/40/New_York_Times_logo_variation.jpg"
-                    }
+                    src={imgURL() ? imgURL() : nytimesLogo}
                     alt={imgURL()}
                 />
                 <p className={styles.pubDate}>

@@ -1,5 +1,6 @@
 import styles from "./Story.module.css"
 import StoryFooter from "../StoryFooter/StoryFooter"
+import nytimesLogo from "../../images/nytimesLogo.jpeg"
 
 function Story({ data }) {
     return (
@@ -11,7 +12,7 @@ function Story({ data }) {
                         src={
                             data.media[0]?.["media-metadata"]?.[2]?.url
                                 ? data.media[0]["media-metadata"][2].url
-                                : "https://upload.wikimedia.org/wikipedia/commons/4/40/New_York_Times_logo_variation.jpg"
+                                : nytimesLogo
                         }
                         alt={data.media.caption}
                     />
@@ -22,7 +23,7 @@ function Story({ data }) {
                         src={
                             data.multimedia?.[0]?.url
                                 ? data.multimedia[0].url
-                                : "https://upload.wikimedia.org/wikipedia/commons/4/40/New_York_Times_logo_variation.jpg"
+                                : nytimesLogo
                         }
                     />
                 )}
