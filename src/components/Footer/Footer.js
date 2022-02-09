@@ -1,12 +1,12 @@
 import styles from "./Footer.module.css"
-import { FaLinkedinIn, FaGithub } from "react-icons/fa"
+import { FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa"
 
 export default function Footer() {
     return (
         <div>
             <div className={styles.top}></div>
             <div className={styles.container}>
-                <p>Proudly made in 🇺🇸 by Michael Marafino</p>
+                <p>Proudly made by Michael Marafino</p>
                 <div className={styles.socials}>
                     <ul className={styles.flexContainer}>
                         <li>
@@ -30,6 +30,20 @@ export default function Footer() {
                                 rel="noreferrer"
                                 title="Github">
                                 <FaGithub
+                                    className={styles.icons}
+                                    color={"var(--accent-color)"}
+                                    style={{ padding: "10px" }}
+                                    size={50}
+                                />
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="https://twitter.com/michaelmarafino"
+                                target="_blank"
+                                rel="noreferrer"
+                                title="Twitter">
+                                <FaTwitter
                                     className={styles.icons}
                                     color={"var(--accent-color)"}
                                     style={{ padding: "10px" }}

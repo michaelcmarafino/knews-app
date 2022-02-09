@@ -22,13 +22,19 @@
     border-top: 1px solid gray;
     border-bottom: 1px solid gray;
     padding: 0.5em 0;
-    scrollbar-width: none; /* for Firefox */
-}
-
-.filterBtnsContainer::-webkit-scrollbar {
-    display: none;
 }
 
 .flexContainer {
     display: flex;
+}
+
+/* Adds horizontal scrollbars for filter buttons when on desktop and larger screens */
+@media screen and (max-width: 850px) {
+    .filterBtnsContainer {
+        scrollbar-width: none; /*for Firefox */
+    }
+
+    .filterBtnsContainer::-webkit-scrollbar {
+        display: none;
+    }
 }
