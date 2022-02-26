@@ -49,7 +49,7 @@ export default function StoryFooter({ data, bottomPos, isResult }) {
             isResult: isResult,
         }
         !isFav
-            ? setFavArr([...favArr, dataWithAddedToFavsDate])
+            ? setFavArr([dataWithAddedToFavsDate, ...favArr])
             : setFavArr((prevArr) => prevArr.filter((item) => item !== data))
     }
 
