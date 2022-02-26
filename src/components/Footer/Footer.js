@@ -25,7 +25,7 @@ export default function Footer() {
                         </li>
                         <li>
                             <a
-                                href="https://github.com/michaelcmarafino"
+                                href="https://github.com/michaelcmarafino/knews-app"
                                 target="_blank"
                                 rel="noreferrer"
                                 title="Github">
