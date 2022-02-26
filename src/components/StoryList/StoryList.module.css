@@ -55,13 +55,15 @@
     display: none;
 }
 
-@media screen and (max-width: 850px) {
-    .container {
-        margin: 0 1rem;
+@media all and (max-width: 850px) {
+    .listItem {
+        padding: 0.3em 0.6em;
+        transition: all 200ms ease-in-out;
+        border-radius: 8px;
+        background-color: rgba(34, 34, 34, 0.1);
+        letter-spacing: 0.5px;
     }
-}
 
-@media screen and (max-width: 850px) {
     .trendingPageStyles {
         display: flex;
         flex-direction: column;
@@ -72,5 +74,9 @@
 
     .trendingPageStyles * {
         margin: 0 auto 0.5rem auto;
+    }
+
+    .container {
+        margin: 0 1rem;
     }
 }

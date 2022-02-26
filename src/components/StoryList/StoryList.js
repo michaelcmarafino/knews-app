@@ -39,8 +39,8 @@ export default function StoryList({
                 {console.log("I rendered the StoryList")}
             </div>
             <ReactPaginate
-                previousLabel="< Previous"
-                nextLabel="Next >"
+                previousLabel="Prev"
+                nextLabel="Next"
                 breakLabel="..."
                 pageCount={pageCount}
                 onPageChange={changePage}
