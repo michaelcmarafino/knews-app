@@ -18,6 +18,10 @@
     margin-bottom: 0.5em;
 }
 
+.container > div + div > * {
+    margin-bottom: 0.7rem;
+}
+
 .imageContainer {
     max-height: 400px;
     object-fit: cover;
@@ -79,13 +83,21 @@
         padding-bottom: 1rem;
     }
 
+    .container > div + div {
+        padding: 1rem;
+    }
+
     .trendingContent {
-        margin: 0 6rem;
+        margin: 0 3rem;
+    }
+    .imageContainer {
+        display: flex;
+        justify-content: center;
     }
 }
 
 @media screen and (max-width: 600px) {
     .trendingContent {
-        margin: 0 4rem;
+        margin: 0rem;
     }
 }
