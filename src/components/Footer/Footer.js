@@ -54,11 +54,6 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className={styles.btns}>
-                    <a href="https://www.netlify.com/" title="Netlify">
-                        Deployed by Netlify
-                    </a>
-                </div>
-                <div className={styles.btns}>
                     <a href="https://developer.nytimes.com/" title="NYT API">
                         Powered by the NY Times API
                     </a>
