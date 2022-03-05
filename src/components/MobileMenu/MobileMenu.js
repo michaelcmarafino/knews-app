@@ -1,9 +1,12 @@
 import styles from "./MobileMenu.module.css"
+import Search from "../Search/Search"
+import { useState } from "react"
 import { ReactComponent as CloseNav } from "../../images/close-nav.svg"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 
 export default function MobileMenu({ toggleMenu }) {
+    const [showSearch, setShowSearch] = useState(false)
     return (
         <motion.section className={styles.container}>
             <div className={styles.mobileIconContainer}>
@@ -31,7 +34,14 @@ export default function MobileMenu({ toggleMenu }) {
                     to="/favorites">
                     <li className={styles.listItem}>FAVORITES</li>
                 </Link>
-                <li className={styles.listItem}>SEARCH</li>
+                <li
+                    className={styles.listItem}
+                    onClick={() => setShowSearch((prev) => !prev)}>
+                    SEARCH
+                </li>
+                <li className={styles.search}>
+                    {showSearch && <Search navBtn />}
+                </li>
             </ul>
         </motion.section>
     )

@@ -28,7 +28,8 @@
     letter-spacing: 2px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
+    margin-top: 10rem;
     align-items: center;
     height: 100vh;
 }
@@ -46,4 +47,9 @@
 .listItem:focus {
     background-color: darkgray;
     cursor: pointer;
+}
+
+.search {
+    list-style: none;
+    margin-top: 1rem;
 }
