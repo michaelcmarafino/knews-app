@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom"
 import { ContextProvider } from "./Context"
 import App from "./App"
 
+import "normalize-css"
 import "./styles.css"
 
 render(
