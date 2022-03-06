@@ -20,6 +20,10 @@ a {
     text-decoration: none;
 }
 
+a:focus {
+    outline: none;
+}
+
 img {
     max-width: 100%;
     display: block;
