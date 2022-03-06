@@ -5,7 +5,7 @@ import { ReactComponent as CloseNav } from "../../images/close-nav.svg"
 import { motion } from "framer-motion"
 import { Link } from "react-router-dom"
 
-export default function MobileMenu({ toggleMenu }) {
+export default function MobileMenu({ toggleMenu, isMobileMenuOpen }) {
     const [showSearch, setShowSearch] = useState(false)
     return (
         <motion.section className={styles.container}>
@@ -40,7 +40,13 @@ export default function MobileMenu({ toggleMenu }) {
                     SEARCH
                 </li>
                 <li className={styles.search}>
-                    {showSearch && <Search navBtn />}
+                    {showSearch && (
+                        <Search
+                            navBtn
+                            toggleMenu={toggleMenu}
+                            isMobileMenuOpen={isMobileMenuOpen}
+                        />
+                    )}
                 </li>
             </ul>
         </motion.section>

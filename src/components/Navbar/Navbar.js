@@ -3,15 +3,14 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import Search from "../Search/Search"
 import { ReactComponent as HomeIcon } from "../../images/knews.svg"
-import { ReactComponent as MobileNav } from "../../images/mobile-nav.svg"
+import { ReactComponent as MobileNavIcon } from "../../images/mobile-nav.svg"
 import MobileMenu from "../MobileMenu/MobileMenu"
 
 export default function Navbar() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
     function toggleMenu() {
-        console.log("hi")
-        setIsMenuOpen((prev) => !prev)
+        setIsMobileMenuOpen((prev) => !prev)
     }
 
     return (
@@ -47,11 +46,14 @@ export default function Navbar() {
                         />
                     </li>
                 </Link>
-                <div className={styles.mobileIconContainer}>
-                    {isMenuOpen ? (
-                        <MobileMenu toggleMenu={toggleMenu} />
+                <div className={styles.mobileNavIconContainer}>
+                    {isMobileMenuOpen ? (
+                        <MobileMenu
+                            toggleMenu={toggleMenu}
+                            isMobileMenuOpen={isMobileMenuOpen}
+                        />
                     ) : (
-                        <MobileNav
+                        <MobileNavIcon
                             onClick={toggleMenu}
                             className={styles.mobileNavBtn}
                             fill="white"

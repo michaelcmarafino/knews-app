@@ -5,7 +5,13 @@ import { useContext, useRef } from "react"
 import { useHistory } from "react-router"
 import { ReactComponent as SearchIcon } from "../../images/search.svg"
 
-export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
+export default function Search({
+    sidebarSearch,
+    navBtn,
+    sidebarBtn,
+    toggleMenu,
+    isMobileMenuOpen,
+}) {
     const {
         setSearchResults,
         setIsSearchLoading,
@@ -20,6 +26,7 @@ export default function Search({ sidebarSearch, navBtn, sidebarBtn }) {
         // if (!query || query.length === 0 || !query.trim()) return
         // e.key === "Enter" &&
         e.preventDefault()
+        isMobileMenuOpen && toggleMenu()
         history.push("/results")
         const params = new URLSearchParams()
         if (query.current.value.length > 1) {
