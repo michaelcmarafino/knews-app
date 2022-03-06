@@ -7,6 +7,9 @@ import { Link } from "react-router-dom"
 
 export default function MobileMenu({ toggleMenu, isMobileMenuOpen }) {
     const [showSearch, setShowSearch] = useState(false)
+    function toggleSearch() {
+        setShowSearch((prev) => !prev)
+    }
     return (
         <motion.section className={styles.container}>
             <div className={styles.mobileIconContainer}>
@@ -34,9 +37,7 @@ export default function MobileMenu({ toggleMenu, isMobileMenuOpen }) {
                     to="/favorites">
                     <li className={styles.listItem}>FAVORITES</li>
                 </Link>
-                <li
-                    className={styles.listItem}
-                    onClick={() => setShowSearch((prev) => !prev)}>
+                <li className={styles.listItem} onClick={toggleSearch}>
                     SEARCH
                 </li>
                 <li className={styles.search}>
