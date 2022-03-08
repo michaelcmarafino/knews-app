@@ -59,6 +59,19 @@
     font-size: 1.3rem;
 }
 
+@media all and (max-width: 950px) and (min-width: 851px) {
+    .flexContainer {
+        display: block;
+        padding: 0;
+        border-radius: 20px;
+    }
+
+    .imgContainer {
+        max-width: 100%;
+        min-width: 300px;
+    }
+}
+
 @media all and (max-width: 680px) {
     .flexContainer {
         display: block;
