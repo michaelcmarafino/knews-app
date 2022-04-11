@@ -9,7 +9,7 @@ export default function SidebarBtn({ fav, handleRemove }) {
             key={fav?.url || fav?.web_url}
             id={fav.uri}
             className={styles.flexContainer}
-            onMouseEnter={() => setIsBtnShowing(true)}
+            onMouseOver={() => setIsBtnShowing(true)}
             onMouseLeave={() => setIsBtnShowing(false)}>
             <a
                 href={fav?.url || fav?.web_url}

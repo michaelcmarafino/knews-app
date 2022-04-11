@@ -38,15 +38,19 @@ export default function SideBar({ expandedHome }) {
                 ) : null}
             </Link>
 
-            {favArr.map((fav) => {
-                return (
-                    <SidebarBtn
-                        key={fav.title}
-                        fav={fav}
-                        handleRemove={handleRemove}
-                    />
-                )
-            })}
+            {favArr.length === 0 ? (
+                <p>Squeeze a heart to add a favorite here...</p>
+            ) : (
+                favArr.map((fav) => {
+                    return (
+                        <SidebarBtn
+                            key={fav.title}
+                            fav={fav}
+                            handleRemove={handleRemove}
+                        />
+                    )
+                })
+            )}
         </div>
     )
 }

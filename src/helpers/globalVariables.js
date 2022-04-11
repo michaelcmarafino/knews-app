@@ -1,1 +1,1 @@
-export const APP_TITLE = "Knews"
+export const APP_TITLE = "Long Island Sound Ledger"

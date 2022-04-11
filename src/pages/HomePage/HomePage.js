@@ -12,29 +12,29 @@ export default function HomePage() {
 
     //change tab title when rendering
     useEffect(() => {
-        document.title = `${APP_TITLE} - Stay in the Know`
+        document.title = `${APP_TITLE}`
     }, [])
 
     const TOP_STORIES_URL = `https://api.nytimes.com/svc/topstories/v2/${topStorySubject.filterTerm}.json?api-key=${process.env.REACT_APP_NYT_API_KEY}`
 
     useEffect(() => {
         fetch(TOP_STORIES_URL)
-            .then((res) => {
+            .then(res => {
                 if (!res.ok) {
                     throw Error("Couldn't get your articles")
                 }
                 return res.json()
             })
-            .then((dataResults) => {
+            .then(dataResults => {
                 const data = dataResults.results
-                    .filter((item) => item.section !== "admin")
-                    .filter((item) => item.item_type !== "Promo")
+                    .filter(item => item.section !== "admin")
+                    .filter(item => item.item_type !== "Promo")
                 setArticles(data)
 
                 console.log("Got data for home page")
                 console.log("current page: ", currentPage)
             })
-            .catch((err) => {
+            .catch(err => {
                 console.log(err)
                 if (err === 429) {
                     console.log("Too many requests")
@@ -76,7 +76,7 @@ export default function HomePage() {
         { filterTerm: "world", displayTerm: "World" },
     ]
 
-    const btns = filterBtnText.map((b) => (
+    const btns = filterBtnText.map(b => (
         <FilterButton
             key={b.filterTerm}
             btnInfo={b}
