@@ -70,6 +70,12 @@
     font-size: 0.7rem;
 }
 
+.placeholder {
+    color: var(--accent-color);
+    padding: 0 1rem;
+    text-align: center;
+}
+
 @media screen and (max-width: 850px) {
     .container {
         display: none;

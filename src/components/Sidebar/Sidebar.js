@@ -14,7 +14,7 @@ export default function SideBar({ expandedHome }) {
     const [top] = useScrollEffect()
     function handleRemove(e) {
         let element = e.target.parentNode.parentNode.parentNode.id
-        let newFavArr = favArr.filter((item) => item.uri !== element)
+        let newFavArr = favArr.filter(item => item.uri !== element)
         setFavArr(newFavArr)
     }
 
@@ -39,9 +39,11 @@ export default function SideBar({ expandedHome }) {
             </Link>
 
             {favArr.length === 0 ? (
-                <p>Squeeze a heart to add a favorite here...</p>
+                <p className={styles.placeholder}>
+                    Squeeze a heart to add a favorite here...
+                </p>
             ) : (
-                favArr.map((fav) => {
+                favArr.map(fav => {
                     return (
                         <SidebarBtn
                             key={fav.title}
