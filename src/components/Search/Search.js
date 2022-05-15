@@ -22,7 +22,7 @@ export default function Search({
     const query = useRef()
     const history = useHistory()
 
-    const fetchResults = (e) => {
+    const fetchResults = e => {
         // if (!query || query.length === 0 || !query.trim()) return
         // e.key === "Enter" &&
         e.preventDefault()
@@ -41,21 +41,21 @@ export default function Search({
         window.scrollTo(0, 0)
         // `https://api.nytimes.com/svc/search/v2/articlesearch.json?q="${query.current.value}"&newest&&api-key=${process.env.REACT_APP_NYT_API_KEY}`
         fetch(
-            `https://api.nytimes.com/svc/search/v2/articlesearch.json?page=${searchPageNumber}&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}&q="${query.current.value}"`
+            `https://api.nytimes.com/svc/search/v2/articlesearch.json?page=${searchPageNumber}&sort=newest&api-key=${process.env.REACT_APP_NYT_API_KEY}&q=${query.current.value}`
         )
-            .then((res) => {
+            .then(res => {
                 if (!res.ok) {
                     throw Error("Couldn't complete your search. Try again.")
                 }
                 return res.json()
             })
-            .then((data) => {
+            .then(data => {
                 setSearchResults(data.response.docs)
                 setIsSearchLoading(false)
                 console.log("Got data for Search bar")
-                setSearchPageNumber((searchPageNumber) => searchPageNumber + 1)
+                setSearchPageNumber(searchPageNumber => searchPageNumber + 1)
             })
-            .catch((err) => {
+            .catch(err => {
                 console.log(err)
                 // Place default error page here - make component
             })

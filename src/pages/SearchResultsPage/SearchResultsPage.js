@@ -18,9 +18,10 @@ export default function SearchResultsPage() {
         <div className={styles.container}>
             <h2>
                 Showing Results for "
-                {window.location.href.substring(
-                    window.location.href.indexOf("=") + 1
-                )}
+                {window.location.href
+                    .substring(window.location.href.indexOf("=") + 1)
+                    .split("+")
+                    .join(" ")}
                 "
             </h2>
             <div className={styles.flexContainer}>
