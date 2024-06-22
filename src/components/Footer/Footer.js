@@ -6,7 +6,7 @@ export default function Footer() {
         <div>
             <div className={styles.top}></div>
             <div className={styles.container}>
-                <p>Proudly made by Michael Marafino</p>
+                {/*<p>Proudly made by Michael Marafino</p> */}
                 <div className={styles.socials}>
                     <ul className={styles.flexContainer}>
                         <li>
@@ -54,9 +54,10 @@ export default function Footer() {
                     </ul>
                 </div>
                 <div className={styles.btns}>
-                    <a href="https://developer.nytimes.com/" title="NYT API">
+                    {/* <a href="https://developer.nytimes.com/" title="NYT API">
                         Powered by the NY Times API
-                    </a>
+                    </a> */}
+                    <p>&copy; Long Island Sound Ledger. All rights reserved.</p>
                 </div>
             </div>
         </div>
