@@ -57,7 +57,11 @@ export default function Footer() {
                     {/* <a href="https://developer.nytimes.com/" title="NYT API">
                         Powered by the NY Times API
                     </a> */}
-                    <p>&copy; Long Island Sound Ledger. All rights reserved.</p>
+                    <a
+                        href="https://longislandsoundledger.netlify.app/"
+                        title="Long Island Sound Ledger">
+                        &copy; Long Island Sound Ledger. All rights reserved.
+                    </a>
                 </div>
             </div>
         </div>
